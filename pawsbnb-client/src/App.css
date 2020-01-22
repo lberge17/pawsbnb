@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: rgb(66, 66, 153);
 }
 
 .App-header {
@@ -11,4 +12,24 @@
   /* justify-content: center; */
   /* font-size: calc(10px + 2vmin); */
   /* color: white; */
+}
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  height: 60px;
+  background-color: whitesmoke;
+  padding: 10px;
+}
+
+.navlink {
+  display: inline;
+  margin: 10px;
+  font-size: 25px;
+}
+
+.logo {
+  height: 100%;
 }

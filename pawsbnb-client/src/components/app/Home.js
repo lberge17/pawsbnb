@@ -11,6 +11,7 @@ export default class Home extends Component {
                     <div className="panel img3"></div>
                     <div className="panel img4"></div>
                 </div>
+                <img className="centered-logo" src={Logo}/>
             </div>
         )
     }

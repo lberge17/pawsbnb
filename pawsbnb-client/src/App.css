@@ -8,29 +8,33 @@
   margin: 0;
   padding: 0;
   text-align: left;
-  height: 60px;
+  height: 0px;
   background-color: whitesmoke;
-  padding: 10px;
-  position: -webkit-sticky;
-  position: sticky;
+  padding: 0px;
+  overflow: hidden;
 }
 
 .navlink {
+  color: rgb(0, 0, 109);
   display: inline;
-  margin: 10px;
-  font-size: 25px;
+  padding: 5px;
+  font-size: 10px;
   text-decoration: none;
-}
-
-.nav {
-  height: 60px;
-  /* overflow: hidden; */
-  position: fixed;
-  top: 0;
 }
 
 .logo {
   height: 100%;
+  margin-right: 50px;
+}
+
+.centered-logo {
+  width: 200px;
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
 }
 
 .home {
@@ -88,5 +92,14 @@
 @media only screen and (max-width: 600px) {
   .home {
     grid-template-columns: 100%;
+  }
+
+  .navbar {
+    height: 60px;
+    padding: 10px;
+  }
+
+  .centered-logo {
+    visibility: hidden;
   }
 }

@@ -28,7 +28,7 @@
 }
 
 .centered-logo {
-  width: 200px;
+  width: 300px;
   position: fixed;
   z-index: 10;
   top: 50%;
@@ -47,46 +47,94 @@
 }
 
 .panel {
+  text-align: center;
   width: 100%;
   height: 50vh;
   margin: auto;
+  /* opacity: 50%; */
+}
+
+.panel:hover {
+  transform: scale(1.4);
+  z-index: 0;
 }
 
 .img1 {
-  background-image: url('./components/app/kitten-image.jpeg');
+  z-index: 1;
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('./components/app/kitten-image.jpeg');
   background-size: cover;
   background-position: left center;
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .img2 {
-  background-image: url('./components/app/dog-running-image.jpg');
+  z-index: 1;
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('./components/app/dog-running-image.jpg');
   background-size: cover;
   background-position: center center;
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .img3 {
-  background-image: url('./components/app/dogs-snow-image.jpg');
+  z-index: 1;
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('./components/app/dogs-snow-image.jpg');
   background-size: cover;
   background-position: center center;
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .img4 {
-  background-image: url('./components/app/cardboard-kittens-image.jpg');
+  z-index: 1;
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('./components/app/cardboard-kittens-image.jpg');
   background-size: cover;
   background-position: center center;
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .home-wrapper {
   padding: 1px;
   background-color: black;
+}
+
+.home-pg-link {
+  position: relative;
+  color: white;
+  text-shadow: 4px 4px black;
+  top: 40%;
+  font-size: 3em;
+  font-family: 'Trebuchet MS';
+  font-style: oblique;
+  text-decoration: none;
+  /* padding-top: 40%;
+  padding-bottom: 40%; */
 }
 
 @media only screen and (max-width: 600px) {

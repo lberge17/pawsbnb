@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Breeds from './component/Breeds'
+import Breeds from './components/Breeds'
 
 function App() {
   return (

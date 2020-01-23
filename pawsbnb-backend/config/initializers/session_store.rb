@@ -1,1 +1,1 @@
-Rails.application.config.session_store :cookie_store, key: '_pawsbnb_backend', domain: 'http://localhost:3000'
+Rails.application.config.session_store :cookie_store, key: '_pawsbnb_backend'

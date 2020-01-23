@@ -6,7 +6,8 @@ import axios from 'axios';
 export default class Login extends Component {
     state = {
         email: "",
-        password: ""
+        password: "",
+        error: ""
     }
 
     handleChange = ({target}) => {
@@ -28,10 +29,13 @@ export default class Login extends Component {
             { withCredentials: true }
         )
         .then(resp => {
-            if (resp.data.status === "created") {
+            if (resp.data.logged_in) {
                 this.props.handleSuccessfulAuth(resp.data, this.props.history)
             } else {
                 console.log(resp)
+                this.setState({
+                    error: "Invalid login."
+                })
             }
         })
         .catch(error => console.log(error))
@@ -40,6 +44,7 @@ export default class Login extends Component {
     render() {
         return <div>
             <form onSubmit={this.handleSubmit} className="auth-form">
+                <p className="error">{this.state.error}</p>
                 <input 
                     type="email" 
                     name="email" 

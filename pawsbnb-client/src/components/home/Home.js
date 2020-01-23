@@ -4,6 +4,10 @@ import Navbar from './Navbar'
 import './css/home.css';
 
 export default class Home extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="App">
@@ -15,7 +19,7 @@ export default class Home extends Component {
                                 <p className="home-pg-link">Provider Login</p>
                             </a>
                             <a className="panel img2" href="#">
-                                <p className="home-pg-link">Client Login</p>
+                                <p className="home-pg-link">{this.props.loggedIn ? 'you are logged in' : 'please log in'}</p>
                             </a>
                             <a className="panel img3" href="#">
                                 <p className="home-pg-link">Pet Breed Info</p>

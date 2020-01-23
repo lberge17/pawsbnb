@@ -5,7 +5,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/home/Home'
-import About from './components/home/About'
+import About from './components/about/About'
 
 
 ReactDOM.render((

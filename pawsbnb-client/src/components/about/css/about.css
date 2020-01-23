@@ -1,0 +1,40 @@
+.wrapper {
+    overflow: hidden;
+}
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    height: 10vh;
+    background-color: whitesmoke;
+    padding: 10px;
+    overflow: hidden;
+}
+  
+.navlink {
+    color: rgb(0, 0, 109);
+    display: inline;
+    padding: 5px;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+.logo {
+    height: 100%;
+}
+
+.about-container {
+    position: relative;
+    padding: 5%;
+    height: 90vh;
+    width: 90%;
+    margin: 1%;
+    border: 2px solid black;
+}
+
+.center {
+    text-align: center;
+    font-size: 3em;
+}

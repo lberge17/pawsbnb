@@ -20,7 +20,7 @@ export default class Home extends Component {
                             <a className="panel img3" href="#">
                                 <p className="home-pg-link">Pet Breed Info</p>
                             </a>
-                            <a className="panel img4" href="#">
+                            <a className="panel img4" href="/about">
                                 <p className="home-pg-link">About PawsBnB</p>
                             </a>
                         </div>

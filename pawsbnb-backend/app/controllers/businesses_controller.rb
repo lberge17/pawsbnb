@@ -26,7 +26,7 @@ class BusinessesController < ApplicationController
             :phone,
             :email,
             :website,
-            :owner_id
+            :user_id
         )
     end
 end

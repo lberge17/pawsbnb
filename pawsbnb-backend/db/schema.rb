@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2020_01_24_180943) do
     t.string "phone"
     t.string "email"
     t.string "website"
-    t.bigint "owner_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["owner_id"], name: "index_businesses_on_owner_id"
+    t.index ["user_id"], name: "index_businesses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

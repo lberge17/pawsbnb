@@ -9,7 +9,7 @@ class CreateBusinesses < ActiveRecord::Migration[6.0]
       t.string :phone
       t.string :email
       t.string :website
-      t.belongs_to :owner
+      t.belongs_to :user
 
       t.timestamps
     end

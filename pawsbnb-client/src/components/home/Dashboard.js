@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import BusinessForm from '../business/BusinessForm'
 
 export default class Dashboard extends Component {
     render() {
@@ -6,6 +7,10 @@ export default class Dashboard extends Component {
             this.props.history.push('/')
         }
 
-        return <div>Dashboard</div>
+        return (
+            <div>
+                <BusinessForm user={this.props.user} />
+            </div>
+        )
     }
 }

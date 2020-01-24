@@ -7,9 +7,11 @@ export default class Dashboard extends Component {
             this.props.history.push('/')
         }
 
+        console.log(this.props.user)
+
         return (
             <div>
-                <BusinessForm user={this.props.user} />
+                {this.props.business ? 'Your Dashboard' : <BusinessForm user={this.props.user} />}
             </div>
         )
     }

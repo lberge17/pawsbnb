@@ -14,7 +14,8 @@ export default class App extends Component {
 
     this.state = {
       loggedIn: false,
-      user: {}
+      user: {},
+      business: {}
     }
   }
 
@@ -35,7 +36,9 @@ export default class App extends Component {
       .then(resp => {
         if(resp.data.logged_out) {
           this.setState({
-            loggedIn: false
+            loggedIn: false,
+            user: {},
+            business: {}
           })
         }
       })
@@ -49,7 +52,8 @@ export default class App extends Component {
         if (resp.data.logged_in) {
           this.setState({
             loggedIn: resp.data.logged_in,
-            user: resp.data.user
+            user: resp.data.user,
+            business: resp.data.business
           })
         } else {
           this.setState({
@@ -96,7 +100,7 @@ export default class App extends Component {
           <Route
             exact path='/dashboard'
             render={props => (
-              <Dashboard { ...props } loggedIn={this.state.loggedIn} user={this.state.user} />
+              <Dashboard { ...props } loggedIn={this.state.loggedIn} user={this.state.user} business={this.state.business} />
             )}
           />
         </Router>

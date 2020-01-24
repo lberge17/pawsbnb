@@ -13,7 +13,7 @@ export default class BusinessForm extends Component {
             phone: "",
             email: "",
             website: "",
-            user_id: this.props.user.id
+            user_id: props.user.id
         }
     }
 

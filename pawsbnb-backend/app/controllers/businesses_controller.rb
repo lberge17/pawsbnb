@@ -1,8 +1,18 @@
 class BusinessesController < ApplicationController
     def create
-        business = Business.create(business_params)
+        business = Business.new(
+            title: params['business']['title'],
+            description: params['business']['description'],
+            location: params['business']['location'],
+            zip: params['business']['zip'].to_i,
+            services: params['business']['services'],
+            phone: params['business']['phone'],
+            email: params['business']['email'],
+            website: params['business']['website']
+        )
+        business.user = User.find(params['business']['user_id'].to_i)
 
-        if business
+        if business.save
             render json: {
                 status: :created,
                 business: business
@@ -10,7 +20,7 @@ class BusinessesController < ApplicationController
         else
             render json: {
                 status: 500,
-                message: 'invalid business registration'
+                message: business.errors.full_messages
             }
         end
     end
@@ -25,8 +35,7 @@ class BusinessesController < ApplicationController
             :services,
             :phone,
             :email,
-            :website,
-            :user_id
+            :website
         )
     end
 end

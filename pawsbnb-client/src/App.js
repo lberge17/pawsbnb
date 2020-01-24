@@ -6,6 +6,7 @@ import Dashboard from './components/home/Dashboard'
 import About from './components/about/About'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
+import Businesses from './components/business/Businesses'
 import axios from 'axios'
 
 export default class App extends Component {
@@ -102,6 +103,10 @@ export default class App extends Component {
             render={props => (
               <Dashboard { ...props } loggedIn={this.state.loggedIn} user={this.state.user} business={this.state.business} />
             )}
+          />
+          <Route
+            exact path='/businesses'
+            component={Businesses}
           />
         </Router>
         {this.state.loggedIn ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}

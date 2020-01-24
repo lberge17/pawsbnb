@@ -100,7 +100,7 @@ export default class App extends Component {
             )}
           />
         </Router>
-        {this.state.loggedIn ? <button onClick={this.handleLogout}>Logout</button> : null}
+        {this.state.loggedIn ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}
       </div>
     );
   }

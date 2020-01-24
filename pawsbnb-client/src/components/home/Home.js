@@ -14,11 +14,11 @@ export default class Home extends Component {
         return (
             <div className="home-wrapper">
                 <div className="home">
-                    <a className="panel img1" href="#">
+                    <a className="panel img1" href="/login">
                         <p className="home-pg-link">Provider Login</p>
                     </a>
                     <a className="panel img2" href="#">
-                        <p className="home-pg-link">{this.props.loggedIn ? 'you are logged in' : 'please log in'}</p>
+                        <p className="home-pg-link">Search for a House Sitter</p>
                     </a>
                     <a className="panel img3" href="#">
                         <p className="home-pg-link">Pet Breed Info</p>

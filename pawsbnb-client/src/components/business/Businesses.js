@@ -10,7 +10,6 @@ export default class Businesses extends Component {
     componentDidMount() {
         axios.get("http://localhost:3000/businesses", { withCredentials: true })
             .then(resp => {
-                console.log(resp)
                 this.setState({
                     businesses: resp.data
                 })
@@ -25,7 +24,7 @@ export default class Businesses extends Component {
         return (
             <div>
                 <h1>All Businesses</h1>
-                {this.state.businesses.map(b => <Business {...b}/>)}
+                {this.state.businesses.map(b => <Business key={b.id} {...b}/>)}
             </div>
         )
     }

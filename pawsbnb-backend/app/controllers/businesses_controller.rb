@@ -1,4 +1,8 @@
 class BusinessesController < ApplicationController
+    def index
+        render json: Business.all
+    end
+
     def create
         business = Business.new(
             title: params['business']['title'],

@@ -1,10 +1,14 @@
 export default (state = {}, action) => {
     switch (action.type) {
-        case 'TEST_ACTION':
+        case 'ADD_BUSINESS':
 
             return {
-                ...state, ...action.test
+                ...state, ...action.business
             }
+        
+        case 'REMOVE_BUSINESS':
+
+            return {}
 
         default:
 

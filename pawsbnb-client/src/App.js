@@ -8,8 +8,11 @@ import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import Businesses from './components/business/Businesses'
 import axios from 'axios'
+import { connect } from 'react-redux';
+import { testAction } from './actions/testAction'
+import { addBusiness } from './actions/businessActions'
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -111,7 +114,21 @@ export default class App extends Component {
           />
         </Router>
         {this.state.loggedIn ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}
+        <pre>{JSON.stringify(this.props)}</pre>
+        <button onClick={this.props.testAction}>Test Redux</button>
+        <button onClick={() => this.props.addBusiness({title: "hello", description: "hi"})}>Test Business Redux</button>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  ...state
+})
+
+const mapDispatchToProps = dispatch => ({
+  testAction: () => dispatch(testAction()),
+  addBusiness: (business) => dispatch(addBusiness(business))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

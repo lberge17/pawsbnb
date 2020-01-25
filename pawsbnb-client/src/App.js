@@ -9,7 +9,6 @@ import Signup from './components/auth/Signup'
 import Businesses from './components/business/Businesses'
 import axios from 'axios'
 import { connect } from 'react-redux';
-import { testAction } from './actions/testAction'
 import { addBusiness, removeBusiness } from './actions/businessActions'
 import { addUser, removeUser } from './actions/userActions'
 
@@ -95,7 +94,6 @@ class App extends Component {
         </Router>
         {this.props.user ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}<br/>
         <pre>{JSON.stringify(this.props)}</pre>
-        <button onClick={this.props.testAction}>Test Redux</button>
         <button onClick={() => this.props.addBusiness({title: "hello", description: "desc"})}>Test Business Redux</button>
         <button onClick={() => this.props.addUser({name: "hello", email: "hi@gmail.com"})}>Test User Redux</button>
       </div>
@@ -108,7 +106,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  testAction: () => dispatch(testAction()),
   addBusiness: (business) => dispatch(addBusiness(business)),
   removeBusiness: () => dispatch(removeBusiness()),
   addUser: (user) => dispatch(addUser(user)),

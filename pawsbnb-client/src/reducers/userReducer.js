@@ -3,7 +3,7 @@ export default (state = {}, action) => {
         case 'ADD_USER':
 
             return {
-                ...state, ...action.user
+                ...action.user
             }
         
         case 'REMOVE_USER':

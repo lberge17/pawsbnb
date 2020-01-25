@@ -3,7 +3,7 @@ export default (state = {}, action) => {
         case 'ADD_BUSINESS':
 
             return {
-                ...state, ...action.business
+                ...action.business
             }
         
         case 'REMOVE_BUSINESS':

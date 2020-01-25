@@ -19,8 +19,8 @@ class App extends Component {
 
     this.state = {
       loggedIn: false,
-      user: {},
-      business: {}
+      // user: {},
+      // business: {}
     }
   }
 
@@ -30,6 +30,9 @@ class App extends Component {
   }
 
   handleLogin = (data) => {
+    this.props.addBusiness(data.business)
+    this.props.addUser(data.user)
+
     this.setState({
       loggedIn: true,
       user: data.user,
@@ -56,6 +59,8 @@ class App extends Component {
       .then(resp => {
         console.log(resp)
         if (resp.data.logged_in) {
+          this.props.addUser(resp.data.user)
+          this.props.addBusiness(resp.data.business)
           this.setState({
             loggedIn: resp.data.logged_in,
             user: resp.data.user,

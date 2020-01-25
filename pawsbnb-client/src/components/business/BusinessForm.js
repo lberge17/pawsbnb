@@ -31,7 +31,10 @@ export default class BusinessForm extends Component {
             }, { 
                 withCredentials: true 
             })
-            .then(resp => console.log(resp))
+            .then(resp => {
+                console.log(resp)
+                window.location.reload()
+            })
             .catch(error => console.log(error))
     }
 
@@ -44,7 +47,10 @@ export default class BusinessForm extends Component {
         }, {
             withCredentials: true
         })
-        .then(resp => console.log(resp))
+        .then(resp => {
+            console.log(resp)
+            window.location.reload()
+        })
         .catch(error => {
             alert('error fetching')
             console.log(error)

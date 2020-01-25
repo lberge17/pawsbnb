@@ -84,7 +84,7 @@ class App extends Component {
           <Route
             exact path='/dashboard'
             render={props => (
-              <Dashboard { ...props } loggedIn={!!this.props.user} user={this.props.user} business={this.props.business} addBusiness={this.props.addBusiness} />
+              <Dashboard { ...props } loggedIn={!!this.props.user} user={this.props.user} business={this.props.business} />
             )}
           />
           <Route

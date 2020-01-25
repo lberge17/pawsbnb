@@ -17,8 +17,8 @@ export default class Home extends Component {
                     <a className="panel img1" href="/login">
                         <p className="home-pg-link">Provider Login</p>
                     </a>
-                    <a className="panel img2" href="#">
-                        <p className="home-pg-link">Search for a House Sitter</p>
+                    <a className="panel img2" href="/businesses">
+                        <p className="home-pg-link">Search for a PawsBnB</p>
                     </a>
                     <a className="panel img3" href="#">
                         <p className="home-pg-link">Pet Breed Info</p>

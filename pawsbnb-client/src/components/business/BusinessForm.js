@@ -13,8 +13,7 @@ export default class BusinessForm extends Component {
             zip: props.business.zip || "",
             phone: props.business.phone || "",
             email: props.business.email || "",
-            website: props.business.website || "",
-            user_id: props.user.id
+            website: props.business.website || ""
         }
     }
 
@@ -39,6 +38,17 @@ export default class BusinessForm extends Component {
     handleUpdate = (event) => {
         event.preventDefault()
         console.log('updating business')
+
+        Axios.patch(`http://localhost:3000/businesses/${this.props.business.id}`, {
+            business: this.state
+        }, {
+            withCredentials: true
+        })
+        .then(resp => console.log(resp))
+        .catch(error => {
+            alert('error fetching')
+            console.log(error)
+        })
     }
 
     render() {

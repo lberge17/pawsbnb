@@ -4,17 +4,8 @@ class BusinessesController < ApplicationController
     end
 
     def create
-        business = Business.new(
-            title: params['business']['title'],
-            description: params['business']['description'],
-            location: params['business']['location'],
-            zip: params['business']['zip'].to_i,
-            services: params['business']['services'],
-            phone: params['business']['phone'],
-            email: params['business']['email'],
-            website: params['business']['website']
-        )
-        business.user = User.find(params['business']['user_id'].to_i)
+        business = Business.new(business_params)
+        business.user = @current_user
 
         if business.save
             render json: {
@@ -30,7 +21,7 @@ class BusinessesController < ApplicationController
     end
 
     def update
-        business = Business.find_by(id: params['business']['id'])
+        business = Business.find_by(id: params['id'])
 
         if business && business.user == @current_user
             if business.update(business_params)
@@ -43,6 +34,7 @@ class BusinessesController < ApplicationController
                     status: 500,
                     message: business.errors.full_messages
                 }
+            end
         else
             render json: {
                 status: 404,

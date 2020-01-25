@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Business from './Business'
+import { Business } from './Business'
 import axios from 'axios'
 
 export default class Businesses extends Component {

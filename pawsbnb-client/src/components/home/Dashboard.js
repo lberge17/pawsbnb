@@ -11,7 +11,7 @@ export default class Dashboard extends Component {
 
         return (
             <div>
-                {this.props.business ? 'Your Dashboard' : <BusinessForm user={this.props.user} />}
+                {this.props.business ? <BusinessForm user={this.props.user} business={this.props.business}/> : <BusinessForm user={this.props.user} />}
             </div>
         )
     }

@@ -8,7 +8,7 @@ export default class Home extends Component {
     }
 
     render() {
-        if (this.props.loggedIn) {
+        if (this.props.user) {
             this.props.history.push('./dashboard')
         }
         return (

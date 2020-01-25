@@ -10,7 +10,7 @@ import Businesses from './components/business/Businesses'
 import axios from 'axios'
 import { connect } from 'react-redux';
 import { addBusiness, removeBusiness } from './actions/businessActions'
-import { addUser, removeUser } from './actions/userActions'
+import { addUser, removeUser, login, logout } from './actions/userActions'
 
 class App extends Component {
   handleSuccessfulAuth = (data, history) => {
@@ -21,6 +21,7 @@ class App extends Component {
   handleLogin = (data) => {
     this.props.addBusiness(data.business)
     this.props.addUser(data.user)
+    this.props.login()
   }
 
   handleLogout = () => {
@@ -29,6 +30,7 @@ class App extends Component {
         if(resp.data.logged_out) {
           this.props.removeUser()
           this.props.removeBusiness()
+          this.props.logout()
         }
       })
       .catch(error => console.log(error))
@@ -41,9 +43,11 @@ class App extends Component {
         if (resp.data.logged_in) {
           this.props.addUser(resp.data.user)
           this.props.addBusiness(resp.data.business)
+          this.props.login()
         } else {
           this.props.removeBusiness()
           this.props.removeUser()
+          this.props.logout()
         }
       })
       .catch(error => console.log(error))
@@ -60,31 +64,31 @@ class App extends Component {
           <Route 
             exact path='/'
             render={props => (
-              <Home { ...props } loggedIn={!!this.props.user} />
+              <Home { ...props } loggedIn={this.props.loggedIn} />
             )}
           />
           <Route
             exact path='/login'
             render={props => (
-              <Login { ...props } loggedIn={!!this.props.user} handleSuccessfulAuth={this.handleSuccessfulAuth} />
+              <Login { ...props } loggedIn={this.props.loggedIn} handleSuccessfulAuth={this.handleSuccessfulAuth} />
             )}
           />
           <Route
             exact path='/signup'
             render={props => (
-              <Signup { ...props } loggedIn={!!this.props.user} handleSuccessfulAuth={this.handleSuccessfulAuth} />
+              <Signup { ...props } loggedIn={this.props.loggedIn} handleSuccessfulAuth={this.handleSuccessfulAuth} />
             )}
           />
           <Route
             exact path='/about'
             render={props => (
-              <About { ...props } loggedIn={!!this.props.user} />
+              <About { ...props } loggedIn={this.props.loggedIn} />
             )}
           />
           <Route
             exact path='/dashboard'
             render={props => (
-              <Dashboard { ...props } loggedIn={!!this.props.user} user={this.props.user} business={this.props.business} />
+              <Dashboard { ...props } loggedIn={this.props.loggedIn} user={this.props.user} business={this.props.business} />
             )}
           />
           <Route
@@ -92,7 +96,7 @@ class App extends Component {
             component={Businesses}
           />
         </Router>
-        {this.props.user ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}<br/>
+        {this.props.loggedIn ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}<br/>
         <pre>{JSON.stringify(this.props)}</pre>
         <button onClick={() => this.props.addBusiness({title: "hello", description: "desc"})}>Test Business Redux</button>
         <button onClick={() => this.props.addUser({name: "hello", email: "hi@gmail.com"})}>Test User Redux</button>
@@ -109,7 +113,9 @@ const mapDispatchToProps = dispatch => ({
   addBusiness: (business) => dispatch(addBusiness(business)),
   removeBusiness: () => dispatch(removeBusiness()),
   addUser: (user) => dispatch(addUser(user)),
-  removeUser: () => dispatch(removeUser())
+  removeUser: () => dispatch(removeUser()),
+  login: () => dispatch(login()),
+  logout: () => dispatch(logout())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

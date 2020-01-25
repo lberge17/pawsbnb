@@ -24,7 +24,7 @@ export default class Dashboard extends Component {
             <div>
                 {this.state.form ? 
                     <BusinessForm user={this.props.user} business={this.props.business} location={this.props.location}/> :
-                    <button onClick={this.handleFormLoad}>{this.props.business ? 'Edit Your Business': 'Add Your Business'}</button>
+                    <button onClick={this.handleFormLoad}>{this.props.business.title ? 'Edit Your Business': 'Add Your Business'}</button>
                 }
             </div>
         )

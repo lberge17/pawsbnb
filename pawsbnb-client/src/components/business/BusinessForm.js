@@ -59,8 +59,8 @@ export default class BusinessForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.props.business ? this.handleUpdate : this.handleSubmit}>
-                <h2>{this.props.business ? 'Edit':'Add'} Your Business</h2>
+            <form onSubmit={this.props.business.title ? this.handleUpdate : this.handleSubmit}>
+                <h2>{this.props.business.title ? 'Edit':'Add'} Your Business</h2>
                 <input type="text" name="title" value={this.state.title} placeholder="title" onChange={this.handleChange} required/><br/><br/>
                 <textarea name="description" value={this.state.description} placeholder="description" onChange={this.handleChange}></textarea><br/><br/>
                 <textarea name="services" value={this.state.services} placeholder="services you offer" onChange={this.handleChange}></textarea><br/><br/>
@@ -69,7 +69,7 @@ export default class BusinessForm extends Component {
                 <input type="text" name="phone" value={this.state.phone} placeholder="phone#" onChange={this.handleChange}/><br/>
                 <input type="text" name="email" value={this.state.email} placeholder="email" onChange={this.handleChange}/><br/>
                 <input type="text" name="website" value={this.state.website} placeholder="website" onChange={this.handleChange}/><br/>
-                <input type="submit" value={this.props.business ? 'Update Business' : 'Add Business'}/>
+                <input type="submit" value={this.props.business.title ? 'Update Business' : 'Add Business'}/>
             </form>
         )
     }

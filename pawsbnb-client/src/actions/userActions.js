@@ -10,3 +10,15 @@ export const removeUser = () => dispatch => {
         type: 'REMOVE_USER'
     })
 }
+
+export const login = () => dispatch => {
+    dispatch({
+        type: 'LOGIN'
+    })
+}
+
+export const logout = () => dispatch => {
+    dispatch({
+        type: 'LOGOUT'
+    })
+}

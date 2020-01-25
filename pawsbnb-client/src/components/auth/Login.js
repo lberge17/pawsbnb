@@ -61,7 +61,7 @@ export default class Login extends Component {
                     placeholder="Password" 
                     required
                 /><br/>
-                <input type="submit" value="Signup"/>
+                <input type="submit" value="Login"/>
             </form>
         </div>
     }

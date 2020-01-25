@@ -11,6 +11,7 @@ import axios from 'axios'
 import { connect } from 'react-redux';
 import { testAction } from './actions/testAction'
 import { addBusiness } from './actions/businessActions'
+import { addUser } from './actions/userActions'
 
 class App extends Component {
   constructor(props) {
@@ -113,10 +114,11 @@ class App extends Component {
             component={Businesses}
           />
         </Router>
-        {this.state.loggedIn ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}
+        {this.state.loggedIn ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}<br/>
         <pre>{JSON.stringify(this.props)}</pre>
         <button onClick={this.props.testAction}>Test Redux</button>
-        <button onClick={() => this.props.addBusiness({title: "hello", description: "hi"})}>Test Business Redux</button>
+        <button onClick={() => this.props.addBusiness({title: "hello", description: "desc"})}>Test Business Redux</button>
+        <button onClick={() => this.props.addUser({name: "hello", email: "hi@gmail.com"})}>Test User Redux</button>
       </div>
     );
   }
@@ -128,7 +130,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   testAction: () => dispatch(testAction()),
-  addBusiness: (business) => dispatch(addBusiness(business))
+  addBusiness: (business) => dispatch(addBusiness(business)),
+  addUser: (user) => dispatch(addUser(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

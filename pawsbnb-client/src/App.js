@@ -10,20 +10,10 @@ import Businesses from './components/business/Businesses'
 import axios from 'axios'
 import { connect } from 'react-redux';
 import { testAction } from './actions/testAction'
-import { addBusiness } from './actions/businessActions'
-import { addUser } from './actions/userActions'
+import { addBusiness, removeBusiness } from './actions/businessActions'
+import { addUser, removeUser } from './actions/userActions'
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loggedIn: false,
-      // user: {},
-      // business: {}
-    }
-  }
-
   handleSuccessfulAuth = (data, history) => {
     this.handleLogin(data);
     history.push('/about')
@@ -32,23 +22,14 @@ class App extends Component {
   handleLogin = (data) => {
     this.props.addBusiness(data.business)
     this.props.addUser(data.user)
-
-    this.setState({
-      loggedIn: true,
-      user: data.user,
-      business: data.business
-    })
   }
 
   handleLogout = () => {
     axios.delete("http://localhost:3000/logout", { withCredentials: true })
       .then(resp => {
         if(resp.data.logged_out) {
-          this.setState({
-            loggedIn: false,
-            user: {},
-            business: {}
-          })
+          this.props.removeUser()
+          this.props.removeBusiness()
         }
       })
       .catch(error => console.log(error))
@@ -61,16 +42,9 @@ class App extends Component {
         if (resp.data.logged_in) {
           this.props.addUser(resp.data.user)
           this.props.addBusiness(resp.data.business)
-          this.setState({
-            loggedIn: resp.data.logged_in,
-            user: resp.data.user,
-            business: resp.data.business
-          })
         } else {
-          this.setState({
-            loggedIn: false,
-            user: {}
-          })
+          this.props.removeBusiness()
+          this.props.removeUser()
         }
       })
       .catch(error => console.log(error))
@@ -87,31 +61,31 @@ class App extends Component {
           <Route 
             exact path='/'
             render={props => (
-              <Home { ...props } loggedIn={this.state.loggedIn} />
+              <Home { ...props } loggedIn={!!this.props.user} />
             )}
           />
           <Route
             exact path='/login'
             render={props => (
-              <Login { ...props } loggedIn={this.state.loggedIn} handleSuccessfulAuth={this.handleSuccessfulAuth} />
+              <Login { ...props } loggedIn={!!this.props.user} handleSuccessfulAuth={this.handleSuccessfulAuth} />
             )}
           />
           <Route
             exact path='/signup'
             render={props => (
-              <Signup { ...props } loggedIn={this.state.loggedIn} handleSuccessfulAuth={this.handleSuccessfulAuth} />
+              <Signup { ...props } loggedIn={!!this.props.user} handleSuccessfulAuth={this.handleSuccessfulAuth} />
             )}
           />
           <Route
             exact path='/about'
             render={props => (
-              <About { ...props } loggedIn={this.state.loggedIn} />
+              <About { ...props } loggedIn={!!this.props.user} />
             )}
           />
           <Route
             exact path='/dashboard'
             render={props => (
-              <Dashboard { ...props } loggedIn={this.state.loggedIn} user={this.state.user} business={this.state.business} />
+              <Dashboard { ...props } loggedIn={!!this.props.user} user={this.props.user} business={this.props.business} addBusiness={this.props.addBusiness} />
             )}
           />
           <Route
@@ -119,7 +93,7 @@ class App extends Component {
             component={Businesses}
           />
         </Router>
-        {this.state.loggedIn ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}<br/>
+        {this.props.user ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}<br/>
         <pre>{JSON.stringify(this.props)}</pre>
         <button onClick={this.props.testAction}>Test Redux</button>
         <button onClick={() => this.props.addBusiness({title: "hello", description: "desc"})}>Test Business Redux</button>
@@ -136,7 +110,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   testAction: () => dispatch(testAction()),
   addBusiness: (business) => dispatch(addBusiness(business)),
-  addUser: (user) => dispatch(addUser(user))
+  removeBusiness: () => dispatch(removeBusiness()),
+  addUser: (user) => dispatch(addUser(user)),
+  removeUser: () => dispatch(removeUser())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

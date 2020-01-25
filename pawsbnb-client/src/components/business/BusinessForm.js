@@ -68,7 +68,7 @@ export default class BusinessForm extends Component {
                 <input type="number" name="zip" value={this.state.zip} placeholder="zip code" required onChange={this.handleChange}/><br/>
                 <input type="text" name="phone" value={this.state.phone} placeholder="phone#" onChange={this.handleChange}/><br/>
                 <input type="text" name="email" value={this.state.email} placeholder="email" onChange={this.handleChange}/><br/>
-                <input type="text" name="website" value={this.state.website} placeholder="website" onChange={this.handleChange}/><br/>
+                <input type="text" name="website" value={this.state.website} placeholder="website (https://www.ex.com)" onChange={this.handleChange}/><br/>
                 <input type="submit" value={this.props.business.title ? 'Update Business' : 'Add Business'}/>
             </form>
         )

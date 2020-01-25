@@ -14,7 +14,7 @@ export const Business = (props)=> {
                 <p>Services: {props.services}</p>
                 <p>Email: {props.email}</p>
                 <p>Phone: {props.phone}</p>
-                <p><a href={props.website}>Website: {props.website}</a></p>
+                <p>Website: <a href={props.website}>{props.website}</a></p>
             </div>
         </div>
     )

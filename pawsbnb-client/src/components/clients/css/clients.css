@@ -11,6 +11,32 @@ td {
     margin: 0;
 }
 
+.client-data {
+    text-align: left;
+    max-width: 500px;
+    background: whitesmoke;
+    margin: 20px;
+    padding: 5px;
+    border: 2px solid black;
+}
+
+.right {
+    text-align: right;
+}
+.remove {
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.pet-form {
+    margin: 10px 0 10px 0;
+    padding: 0 0 10px 0;
+    background: rgb(215, 230, 235);
+    width: 100%;
+    text-align: center;
+    border-top: 2px solid grey;
+}
+
 @media only screen and (max-width: 500px) {
     td {
         font-size: 10px;

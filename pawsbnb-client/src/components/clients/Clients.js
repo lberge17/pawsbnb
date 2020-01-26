@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import ClientRow from './ClientRow'
+import Client from './Client'
 import Axios from 'axios'
 import './css/clients.css'
 
 export default class Clients extends Component {
     state = {
-        clients: []
+        clients: [],
+        client: null
     }
 
     componentDidMount(){
@@ -17,20 +19,36 @@ export default class Clients extends Component {
                 })
             })
     }
+
+    loadClient = (client) => {
+        this.setState({
+            client
+        })
+    }
+
+    removeClient = () => {(
+        this.setState({
+            client: null
+        })
+    )}
+
     render(){
         console.log(this.state.clients)
         return (
-            <table style={{width: '100%'}} className="client-tbl">
-                <caption style={{textAlign: 'center'},{fontSize: '3em'}}>Clients List</caption>
-                <tr>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Address</th>
-                    <th>Emergency Contact</th>
-                </tr>
-                {this.state.clients[0] ? this.state.clients.map(client => <ClientRow client={client}/>) : null}
-            </table>
+            <div>
+                <h1 style={{textAlign: 'center'},{fontSize: '3em'}}>Clients List</h1>
+                {this.state.client ? <Client client={this.state.client} removeClient={this.removeClient}/> : null}
+                <table style={{width: '100%'}} className="client-tbl">
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Emergency Contact</th>
+                    </tr>
+                    {this.state.clients[0] ? this.state.clients.map(client => <ClientRow client={client} loadClient={this.loadClient}/>) : null}
+                </table>
+            </div>
         )
     }
 }

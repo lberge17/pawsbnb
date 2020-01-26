@@ -4,7 +4,7 @@ export default class ClientRow extends Component {
     render(){
         return (
             <tr>
-                <td>{this.props.client.name}</td>
+                <td><a onClick={() => this.props.loadClient(this.props.client)} href="#">{this.props.client.name}</a></td>
                 <td>{this.props.client.phone}</td>
                 <td>{this.props.client.email}</td>
                 <td>{this.props.client.address}</td>

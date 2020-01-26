@@ -35,9 +35,15 @@ export default class Dashboard extends Component {
                 <div className="side-container">
                     <div id="mySidebar" className={this.state.toggleHam ? "sidebar toggle" : "sidebar"}>
                         <a href="#" className="close" onClick={this.toggle}>&times;</a>
+                        <hr/>
                         <a href="#" onClick={this.handleFormLoad}>Add/Update Business</a>
-                        <a href="#">Clients</a>
+                        <hr/>
+                        <a href="/clients">Clients</a>
+                        <hr/>
+                        <a href="/clients/new">Add New Client</a>
+                        <hr/>
                         <a href="#">Add Appointments</a>
+                        <hr/>
                     </div>
                 </div>
 

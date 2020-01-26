@@ -6,8 +6,9 @@ import Axios from 'axios'
 import './css/clients.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux';
 
-export default class Clients extends Component {
+class Clients extends Component {
     state = {
         clients: [],
         client: null,
@@ -76,3 +77,7 @@ export default class Clients extends Component {
         )
     }
 }
+
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps)(Clients)

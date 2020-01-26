@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import BusinessForm from '../business/BusinessForm'
 import Calendar from './Calendar'
 import './css/dashboard.css'
+import { connect } from 'react-redux';
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
     state = {
         form: false,
         toggleHam: false
@@ -59,3 +60,7 @@ export default class Dashboard extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => (state)
+
+export default connect(mapStateToProps)(Dashboard);

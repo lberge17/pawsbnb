@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_195956) do
+ActiveRecord::Schema.define(version: 2020_01_26_151549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.string "title"
+    t.string "start"
+    t.string "end"
+    t.string "pets"
+    t.text "services"
+    t.text "medications"
+    t.text "details"
+    t.bigint "business_id"
+    t.bigint "client_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_appointments_on_business_id"
+    t.index ["client_id"], name: "index_appointments_on_client_id"
+  end
 
   create_table "businesses", force: :cascade do |t|
     t.string "title"
@@ -28,6 +44,30 @@ ActiveRecord::Schema.define(version: 2020_01_25_195956) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_businesses_on_user_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.string "emergency_contact"
+    t.string "address"
+    t.bigint "business_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_clients_on_business_id"
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.string "name"
+    t.string "breed"
+    t.text "concerns"
+    t.string "birthdate"
+    t.string "weight"
+    t.bigint "client_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_pets_on_client_id"
   end
 
   create_table "users", force: :cascade do |t|

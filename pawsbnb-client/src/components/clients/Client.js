@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PetForm from './PetForm'
+import uuid from 'uuid'
 
 export default class Client extends Component {
     state = {
@@ -37,7 +38,7 @@ export default class Client extends Component {
                 <p>Emergency Contact: {emergency_contact}</p>
                 <h3>Pets</h3>
                 { pets[0] ? pets.map(pet => <p key={pet.id}>Name: {pet.name}</p>) : <p>none listed</p> }
-                { this.state.tempPets.map(pet => <p>Name: {pet.name}</p>) }
+                { this.state.tempPets.map(pet => <p key={uuid()}>Name: {pet.name}</p>) }
                 <button onClick={this.toggleForm}>Add a Pet</button>
                 {this.state.petForm ? <PetForm renderPet={this.renderPet} toggleForm={this.toggleForm} client={this.props.client}/> : null}
             </div>

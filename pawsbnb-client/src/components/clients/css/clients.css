@@ -37,6 +37,10 @@ td {
     border-top: 2px solid grey;
 }
 
+.no-line {
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 500px) {
     td {
         font-size: 10px;

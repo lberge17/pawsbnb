@@ -22,7 +22,10 @@ export default class ClientForm extends Component {
         axios.post('http://localhost:3000/clients', {
                 client: this.state
             }, {withCredentials: true})
-            .then(resp => console.log(resp))
+            .then(resp => {
+                console.log(resp)
+                window.location.reload()
+            })
             .catch(error => console.log('failed clients post fetch', error))
 
     }

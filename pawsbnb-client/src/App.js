@@ -100,10 +100,6 @@ class App extends Component {
             component={Businesses}
           />
           <Route
-            exact path='/clients/new'
-            component={ClientForm}
-          />
-          <Route
             exact path='/clients'
             component={Clients}
           />

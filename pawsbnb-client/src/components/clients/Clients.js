@@ -43,10 +43,10 @@ export default class Clients extends Component {
     }
 
     deleteClient = (id) => {
-        // Axios.delete(`http://localhost:3000/clients/${id}`, { withCredentials: true })
-        //     .then(resp => console.log(resp))
-        //     .catch(error => console.log(error))
         console.log('deleting client with id of ' + id)
+        Axios.delete(`http://localhost:3000/clients/${id}`, { withCredentials: true })
+            .then(resp => console.log(resp))
+            .catch(error => console.log(error))
     }
 
     render(){

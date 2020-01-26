@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: "static#home"
 
   resources :businesses, only: [:index, :create, :update]
-  resources :clients, only: [:index, :create]
+  resources :clients, only: [:index, :create, :destroy]
   resources :pets, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -28,6 +28,23 @@ class ClientsController < ApplicationController
         end
     end
 
+    def destroy
+        if @current_user && @current_user.business && @current_user.business.clients.find_by(id: params[:id])
+            client = Client.find_by(id: params[:id])
+            client.pets.destroy_all
+            client.appointments.destroy_all
+            client.destroy
+            render json: {
+                status: 200,
+                message: "client successfully deleted"
+            }
+        else
+            render json: {
+                status: 401
+            }
+        end
+    end
+
     private
 
     def client_params

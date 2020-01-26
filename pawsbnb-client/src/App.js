@@ -11,6 +11,7 @@ import axios from 'axios'
 import { connect } from 'react-redux';
 import { addBusiness, removeBusiness } from './actions/businessActions'
 import { addUser, removeUser, login, logout } from './actions/userActions'
+import ClientForm from './components/clients/ClientForm'
 
 class App extends Component {
   handleSuccessfulAuth = (data, history) => {
@@ -94,6 +95,10 @@ class App extends Component {
           <Route
             exact path='/businesses'
             component={Businesses}
+          />
+          <Route
+            exact path='/clients/new'
+            component={ClientForm}
           />
         </Router>
         {this.props.loggedIn ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}<br/>

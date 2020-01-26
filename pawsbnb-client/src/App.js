@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/home/Home'
-import Dashboard from './components/home/Dashboard'
+import Dashboard from './components/dashboard/Dashboard'
 import About from './components/about/About'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
@@ -11,9 +11,8 @@ import axios from 'axios'
 import { connect } from 'react-redux';
 import { addBusiness, removeBusiness } from './actions/businessActions'
 import { addUser, removeUser, login, logout } from './actions/userActions'
-import ClientForm from './components/clients/ClientForm'
 import Clients from './components/clients/Clients'
-import {LogoutButton} from './components/home/LogoutButton'
+import {LogoutButton} from './components/auth/LogoutButton'
 
 class App extends Component {
   handleSuccessfulAuth = (data, history) => {

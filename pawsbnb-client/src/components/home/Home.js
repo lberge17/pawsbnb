@@ -20,8 +20,8 @@ export default class Home extends Component {
                     <a className="panel img2" href="/businesses">
                         <p className="home-pg-link">Search for a PawsBnB</p>
                     </a>
-                    <a className="panel img3" href="#">
-                        <p className="home-pg-link">Pet Breed Info</p>
+                    <a className="panel img3" href="/signup">
+                        <p className="home-pg-link">Create a Provider Account</p>
                     </a>
                     <a className="panel img4" href="/about">
                         <p className="home-pg-link">About PawsBnB</p>

@@ -1,2 +1,2 @@
-class ClientsController < ApplicationController
+class AppointmentsController < ApplicationController
 end

@@ -17,8 +17,8 @@ export default class Client extends Component {
         const {name, phone, email, address, emergency_contact, pets} = this.props.client
         return (
             <div className="client-data">
-                <div class="right">
-                    <a class="remove" href="#" onClick={this.props.removeClient}>&times;</a>
+                <div className="right">
+                    <a className="remove" href="#" onClick={this.props.removeClient}>&times;</a>
                 </div>
                 <h2>{name}</h2>
                 <p>Phone: {phone}</p>
@@ -28,7 +28,7 @@ export default class Client extends Component {
                 <h3>Pets</h3>
                 {pets ? pets.map(<p>Name: {pets.name}</p>) : <p>none listed</p>}
                 <button onClick={this.handleClick}>Add a Pet</button>
-                {this.state.petForm ? <PetForm/> : null}
+                {this.state.petForm ? <PetForm client={this.props.client}/> : null}
             </div>
         )
     }

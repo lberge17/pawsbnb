@@ -39,14 +39,18 @@ export default class Clients extends Component {
                 <h1 style={{textAlign: 'center'},{fontSize: '3em'}}>Clients List</h1>
                 {this.state.client ? <Client client={this.state.client} removeClient={this.removeClient}/> : null}
                 <table style={{width: '100%'}} className="client-tbl">
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>Emergency Contact</th>
-                    </tr>
-                    {this.state.clients[0] ? this.state.clients.map(client => <ClientRow client={client} loadClient={this.loadClient}/>) : null}
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Emergency Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.clients[0] ? this.state.clients.map(client => <ClientRow key={client.id} client={client} loadClient={this.loadClient}/>) : null}
+                    </tbody>
                 </table>
             </div>
         )

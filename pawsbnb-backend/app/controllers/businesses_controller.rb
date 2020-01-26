@@ -15,7 +15,7 @@ class BusinessesController < ApplicationController
         else
             render json: {
                 status: 500,
-                message: business.errors.full_messages
+                error: business.errors.full_messages
             }
         end
     end

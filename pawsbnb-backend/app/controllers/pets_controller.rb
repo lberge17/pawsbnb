@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
     def create
-        if @current_user && @current_user.clients.find_by(id: params['pet']['client_id'])
+        if @current_user && @current_user.business.clients.find_by(id: params['pet']['client_id'])
             pet = Pet.new(pet_params)
             if pet.save
                 render json: {

@@ -5,6 +5,7 @@ export default class PetForm extends Component {
     state = {
         name: "",
         breed: "",
+        gender: "",
         birthdate: "",
         weight: "",
         concerns: ""
@@ -49,6 +50,13 @@ export default class PetForm extends Component {
                         placeholder="breed"
                         name="breed"
                         value={this.state.breed}
+                        onChange={this.handleChange}
+                    /><br/>
+                    <input 
+                        type="text" 
+                        placeholder="gender"
+                        name="gender"
+                        value={this.state.gender}
                         onChange={this.handleChange}
                     /><br/>
                     <input 

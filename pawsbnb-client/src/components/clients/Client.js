@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {PetForm} from './PetForm'
+import PetForm from './PetForm'
 
 export default class Client extends Component {
     state = {

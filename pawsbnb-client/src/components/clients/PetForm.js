@@ -1,24 +1,66 @@
-import React from  'react'
+import React, { Component } from  'react'
 
-export const PetForm = (props) => {
-    return (
-        <div className="pet-form">
-            <form class="form-container">
-                <h3>Add Pet</h3>
-                <input type="text" placeholder="name"/><br/>
-                <input type="text" placeholder="breed"/><br/>
-                <input type="text" placeholder="birthdate"/><br/>
-                <input type="text" placeholder="weight"/><br/>
-                <textarea placeholder="concerns"></textarea><br/><br/>
+export default class PetForm extends Component {
+    state = {
+        name: "",
+        breed: "",
+        birthdate: "",
+        weight: "",
+        concerns: ""
+    }
 
-                {/* name
-      t.string :breed
-      t.text :concerns
-      t.string :birthdate
-      t.string :weight */}
-                <input type="submit"/><br/>
-            </form>
-        </div>
-    )
-             
+    handleChange = ({target}) => {
+        this.setState({
+            [target.name]: target.value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+    }
+
+    render(){
+        return (
+            <div className="pet-form">
+                <form class="form-container" onSubmit={this.handleSubmit}>
+                    <h3>Add Pet</h3>
+                    <input 
+                        type="text" 
+                        placeholder="name"
+                        name="name"
+                        value={this.state.name}
+                        onChange={this.handleChange}
+                    /><br/>
+                    <input 
+                        type="text" 
+                        placeholder="breed"
+                        name="breed"
+                        value={this.state.breed}
+                        onChange={this.handleChange}
+                    /><br/>
+                    <input 
+                        type="text" 
+                        placeholder="birthdate"
+                        name="birthdate"
+                        value={this.state.birthdate}
+                        onChange={this.handleChange}
+                    /><br/>
+                    <input 
+                        type="text" 
+                        placeholder="weight"
+                        name="weight"
+                        value={this.state.weight}
+                        onChange={this.handleChange}
+                    /><br/>
+                    <textarea 
+                        placeholder="concerns"
+                        name="concerns"
+                        value={this.state.concerns}
+                        onChange={this.handleChange}
+                    ></textarea><br/><br/>
+                    <input type="submit" value="Add Pet"/><br/>
+                </form>
+            </div>
+        )
+    }
 }

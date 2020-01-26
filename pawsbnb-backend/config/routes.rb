@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   resources :businesses, only: [:index, :create, :update]
   resources :clients, only: [:index, :create]
+  resources :pets, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

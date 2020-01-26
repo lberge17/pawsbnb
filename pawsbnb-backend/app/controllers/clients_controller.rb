@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
     def index
         if @current_user
-            render json: @current_user.business.clients
+            render json: @current_user.business.clients, include: :pets
         else
             render json: {
                 status: 403,

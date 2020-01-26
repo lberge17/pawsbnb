@@ -18,12 +18,17 @@ export default class PetForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+
         Axios.post('http://localhost:3000/pets', {
                 pet: {...this.state, client_id: this.props.client.id}
             }, {
                 withCredentials: true
             })
-            .then(resp => console.log(resp))
+            .then(resp => {
+                console.log(resp)
+                this.props.renderPet(resp.data.pet)
+                this.props.toggleForm()
+            })
             .catch(error => console.log('error post to pets:', error))
     }
 

@@ -3,18 +3,28 @@ import PetForm from './PetForm'
 
 export default class Client extends Component {
     state = {
-        petForm: false
+        petForm: false,
+        tempPets: []
     }
 
-    handleClick = () => {
+    toggleForm = () => {
         console.log('adding a pet')
         this.setState({
             petForm: true
         })
     }
 
+    renderPet = (pet) => {
+        this.setState(prevState => {
+            return {
+                tempPets: prevState.tempPets.concat(pet)
+            }
+        })
+    }
+
     render(){
         const {name, phone, email, address, emergency_contact, pets} = this.props.client
+
         return (
             <div className="client-data">
                 <div className="right">
@@ -26,9 +36,10 @@ export default class Client extends Component {
                 <p>Address: {address}</p>
                 <p>Emergency Contact: {emergency_contact}</p>
                 <h3>Pets</h3>
-                {pets ? pets.map(<p>Name: {pets.name}</p>) : <p>none listed</p>}
-                <button onClick={this.handleClick}>Add a Pet</button>
-                {this.state.petForm ? <PetForm client={this.props.client}/> : null}
+                { pets[0] ? pets.map(pet => <p key={pet.id}>Name: {pet.name}</p>) : <p>none listed</p> }
+                { this.state.tempPets.map(pet => <p>Name: {pet.name}</p>) }
+                <button onClick={this.toggleForm}>Add a Pet</button>
+                {this.state.petForm ? <PetForm renderPet={this.renderPet} toggleForm={this.toggleForm} client={this.props.client}/> : null}
             </div>
         )
     }

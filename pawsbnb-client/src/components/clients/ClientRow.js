@@ -8,7 +8,7 @@ export const ClientRow = (props) => {
             <td>{props.client.email}</td>
             <td>{props.client.address}</td>
             <td>{props.client.emergency_contact}</td>
-            <td onClick={() => props.deleteClient(props.client.id)}><a className="red no-line" href="" >&#9746;</a></td>
+            <td className="red pointer-cursor" onClick={() => props.deleteClient(props.client.id)}>&#9746;</td>
         </tr>
     )
 }

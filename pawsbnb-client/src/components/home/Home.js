@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Logo from './images/pawsbnb-logo.png'
+import Logo from '../../logo/pawsbnb-logo.png'
 import './css/home.css';
 
 export default class Home extends Component {

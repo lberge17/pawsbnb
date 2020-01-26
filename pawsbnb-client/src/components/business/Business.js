@@ -1,6 +1,6 @@
 import React from 'react'
 import './css/business.css'
-import Logo from "../home/images/pawsbnb-logo.png"
+import Logo from "../../logo/pawsbnb-logo.png"
 
 export const Business = (props)=> {
     return (

@@ -13,6 +13,7 @@ import { addBusiness, removeBusiness } from './actions/businessActions'
 import { addUser, removeUser, login, logout } from './actions/userActions'
 import ClientForm from './components/clients/ClientForm'
 import Clients from './components/clients/Clients'
+import {LogoutButton} from './components/home/LogoutButton'
 
 class App extends Component {
   handleSuccessfulAuth = (data, history) => {
@@ -26,13 +27,14 @@ class App extends Component {
     this.props.login()
   }
 
-  handleLogout = () => {
+  handleLogout = (history) => {
     axios.delete("http://localhost:3000/logout", { withCredentials: true })
       .then(resp => {
         if(resp.data.logged_out) {
           this.props.removeUser()
           this.props.removeBusiness()
           this.props.logout()
+          history.push('/')
         }
       })
       .catch(error => console.log(error))
@@ -105,11 +107,14 @@ class App extends Component {
             exact path='/clients'
             component={Clients}
           />
+          <Route
+            path='/'
+            render={props => (
+              (this.props.loggedIn) ? 
+              <LogoutButton {...props} handleLogout={this.handleLogout}/> : null
+            )}
+          />
         </Router>
-        {this.props.loggedIn ? <button onClick={this.handleLogout} className="logout">Logout</button> : null}<br/>
-        <pre>{JSON.stringify(this.props)}</pre>
-        <button onClick={() => this.props.addBusiness({title: "hello", description: "desc"})}>Test Business Redux</button>
-        <button onClick={() => this.props.addUser({name: "hello", email: "hi@gmail.com"})}>Test User Redux</button>
       </div>
     );
   }

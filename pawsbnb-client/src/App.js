@@ -18,7 +18,7 @@ import {LogoutButton} from './components/home/LogoutButton'
 class App extends Component {
   handleSuccessfulAuth = (data, history) => {
     this.handleLogin(data);
-    history.push('/about')
+    history.push('/dashboard')
   }
 
   handleLogin = (data) => {

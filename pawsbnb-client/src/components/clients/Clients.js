@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Client from './Client'
+import ClientRow from './ClientRow'
 import Axios from 'axios'
 import './css/clients.css'
 
@@ -29,7 +29,7 @@ export default class Clients extends Component {
                     <th>Address</th>
                     <th>Emergency Contact</th>
                 </tr>
-                {this.state.clients[0] ? this.state.clients.map(client => <Client client={client}/>) : null}
+                {this.state.clients[0] ? this.state.clients.map(client => <ClientRow client={client}/>) : null}
             </table>
         )
     }

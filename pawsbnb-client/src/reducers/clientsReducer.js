@@ -1,4 +1,4 @@
-export default (state = {}, action) => {
+export default (state = [], action) => {
     let client
     switch (action.type) {
 
@@ -14,7 +14,7 @@ export default (state = {}, action) => {
            
         case 'ADD_CLIENTS':
             
-            return action.clients
+            return [...action.clients]
 
         case 'ADD_PET':
 

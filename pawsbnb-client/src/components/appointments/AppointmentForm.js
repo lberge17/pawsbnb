@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchClients } from '../../actions/clientsActions'
+import { addAppointment } from '../../actions/appointmentsActions'
 
 class AppointmentForm extends Component {
     state = {
         title: "",
-        clientId: "",
+        client_id: "",
         pets: "",
         services: "",
         medications: "",
@@ -26,10 +27,11 @@ class AppointmentForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+        console.log(this.state)
+        this.props.addAppointment(this.state)
     }
 
     render() {
-        console.log(this.props)
         return (
             <div>
                 <h1>Add an Apppointment</h1>
@@ -43,9 +45,10 @@ class AppointmentForm extends Component {
                         placeholder="ex. Spot - Boarding"
                         name="title"
                         value={this.state.title}
+                        onChange={this.handleChange}
                     /><br/>
                     <label>Client:</label><br/>
-                    <select name="clientId" value={this.state.clientId}>
+                    <select name="client_id" value={this.state.client_id} onChange={this.handleChange}>
                         <option>Choose an existing client...</option>
                         {this.props.clients.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                     </select><br/>
@@ -55,24 +58,28 @@ class AppointmentForm extends Component {
                         placeholder="ex. Spot"
                         name="pets"
                         value={this.state.pets}
+                        onChange={this.handleChange}
                     /><br/>
                     <label>Services:</label><br/>
                     <textarea 
                         placeholder="ex. Boarding and Daily Walks"
                         name="services"
                         value={this.state.services}
+                        onChange={this.handleChange}
                     /><br/>
                     <label>Medications:</label><br/>
                     <textarea 
                         placeholder="ex. Spot takes 1 joint supplement a day with breakfast"
                         name="medications"
                         value={this.state.medications}
+                        onChange={this.handleChange}
                     /><br/>
                     <label>Details:</label><br/>
                     <textarea 
                         placeholder="ex. Spot can be food aggressive. Don't feed him around other animals."
                         name="details"
                         value={this.state.details}
+                        onChange={this.handleChange}
                     /><br/>
                     <label>Start:</label><br/>
                     <input 
@@ -80,6 +87,7 @@ class AppointmentForm extends Component {
                         placeholder="ex. Jan 19 2010 9:00"
                         name="start"
                         value={this.state.start}
+                        onChange={this.handleChange}
                     /><br/>
                     <label>End:</label><br/>
                     <input 
@@ -87,6 +95,7 @@ class AppointmentForm extends Component {
                         placeholder="ex. Jan 20 2010 18:00"
                         name="end"
                         value={this.state.end}
+                        onChange={this.handleChange}
                     /><br/><br/>
                     <input type="submit" value="Make Appointment"/><br/><br/>
                 </form>
@@ -98,7 +107,8 @@ class AppointmentForm extends Component {
 const mapStateToProps = (state) => state
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchClients: () => {dispatch(fetchClients())}
+    fetchClients: () => {dispatch(fetchClients())},
+    addAppointment: (appointment) => {dispatch(addAppointment(appointment))}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppointmentForm)

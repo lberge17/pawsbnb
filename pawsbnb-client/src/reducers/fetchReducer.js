@@ -1,5 +1,4 @@
 export default (state = {}, action) => {
-    let client
     switch (action.type) {
         case 'START_FETCH_REQUEST':
 

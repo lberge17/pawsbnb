@@ -23,7 +23,20 @@ export default class Calendar extends React.Component {
         console.log(event)
     }
 
+    formatEvents = () => {
+        
+        return this.props.appointments.map(appointment => {
+            const {title, end, start} = appointment
+
+            let startTime = new Date(start)
+            let endTime = new Date(end)
+            
+            return {title, start: startTime, end: endTime, extendedProps: {...appointment}}
+        })
+    }
+
     render() {
+        console.log(this.formatEvents())
       return (
         <FullCalendar 
             defaultView="dayGridMonth" 
@@ -32,7 +45,7 @@ export default class Calendar extends React.Component {
             editable={true}
             eventDrop={this.handleEventDrop}
             eventClick={this.handleEventClick}
-            events={[{title: "Event", start: '2020-01-26', end: '2020-01-28'}, {title: 'event 2', start: '2020-01-15T24:00:00.000Z', id: "1", extendedProps: {details: "boarding", pet: "Millie"}}]}
+            events={this.formatEvents()}
         />
       )
     }

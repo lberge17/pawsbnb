@@ -4,6 +4,10 @@ export default (state = [], action) => {
 
             return [...state, action.appointment]
 
+        case 'ADD_APPOINTMENTS':
+
+            return action.appointments
+
         default:
 
             return state

@@ -3,6 +3,11 @@ import AppointmentForm from './AppointmentForm'
 
 export default class Appointments extends Component {
     render() {
-        return <AppointmentForm/>
+        return (
+            <div>
+                <h1>Appointments</h1>
+                <AppointmentForm/>
+            </div>
+        )
     }
 }

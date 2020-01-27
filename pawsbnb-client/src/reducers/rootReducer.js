@@ -4,11 +4,13 @@ import userReducer from './userReducer'
 import logReducer from './logReducer'
 import clientsReducer from './clientsReducer'
 import fetchReducer from './fetchReducer'
+import appointmentsReducer from './appointmentsReducer'
 
 export default combineReducers({
     business: businessReducer,
     user: userReducer,
     loggedIn: logReducer,
     clients: clientsReducer,
-    requesting: fetchReducer
+    appointments: appointmentsReducer,
+    requesting: fetchReducer,
 });

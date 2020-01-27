@@ -3,6 +3,7 @@ import BusinessForm from '../business/BusinessForm'
 import Calendar from './Calendar'
 import './css/dashboard.css'
 import { connect } from 'react-redux';
+import { fetchAppointments } from '../../actions/appointmentsActions'
 
 class Dashboard extends Component {
     state = {
@@ -21,6 +22,10 @@ class Dashboard extends Component {
         this.setState(prevState => {
             return {toggleHam: !prevState.toggleHam}
         })
+    }
+
+    componentDidMount() {
+        this.props.fetchAppointments()
     }
 
     render() {
@@ -52,7 +57,7 @@ class Dashboard extends Component {
                 }
                 <div className="calendar-container">
                     <h1>Your Calendar</h1>
-                    <Calendar/>
+                    <Calendar appointments={this.props.appointments}/>
                 </div>
             </div>
         )
@@ -61,4 +66,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => (state)
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = (dispatch) => ({
+    fetchAppointments: () => {dispatch(fetchAppointments())}
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

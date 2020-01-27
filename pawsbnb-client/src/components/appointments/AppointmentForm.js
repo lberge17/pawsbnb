@@ -34,7 +34,7 @@ class AppointmentForm extends Component {
     render() {
         return (
             <div>
-                <h1>Add an Apppointment</h1>
+                <h3>Add an Appointment</h3>
                 {this.props.requesting ? <p>...loading</p> : null}
                 <form onSubmit={this.handleSubmit}>
                     <p>Please make sure your dates are formatted correctly with 24 time</p>

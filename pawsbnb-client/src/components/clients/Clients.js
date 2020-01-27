@@ -4,13 +4,13 @@ import Client from './Client'
 import ClientForm from './ClientForm'
 import './css/clients.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import { addClient, removeClient, fetchClients } from '../../actions/clientsActions'
 
 class Clients extends Component {
     state = {
-        client: null,
+        clientId: null,
         clientForm: false
     }
 
@@ -26,7 +26,7 @@ class Clients extends Component {
 
     loadClient = (client) => {
         this.setState({
-            client
+            clientId: client.id
         })
     }
 
@@ -47,7 +47,7 @@ class Clients extends Component {
                 <h1 style={{textAlign: 'center'},{fontSize: '3em'}}>Clients List</h1>
                 {this.props.clientsInfo.requesting ? <div>loading...</div> : null}
                 {this.state.clientForm ? <ClientForm toggleClientForm={this.toggleClientForm}/> : <button onClick={this.toggleClientForm}>Add new Client</button>}
-                {this.state.client ? <Client client={this.state.client} removeClientPopup={this.removeClientPopup}/> : null}
+                {this.state.clientId ? <Client clientId={this.state.clientId} removeClientPopup={this.removeClientPopup}/> : null}
                 <table style={{width: '100%'}} className="client-tbl">
                     <thead>
                         <tr>

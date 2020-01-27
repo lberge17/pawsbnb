@@ -1,5 +1,4 @@
 import React, { Component } from  'react'
-import Axios from 'axios'
 
 export default class PetForm extends Component {
     state = {
@@ -20,17 +19,9 @@ export default class PetForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        Axios.post('http://localhost:3000/pets', {
-                pet: {...this.state, client_id: this.props.client.id}
-            }, {
-                withCredentials: true
-            })
-            .then(resp => {
-                console.log(resp)
-                this.props.renderPet(resp.data.pet)
-                this.props.toggleForm()
-            })
-            .catch(error => console.log('error post to pets:', error))
+        this.props.addPet({...this.state, client_id: this.props.clientId})
+        this.props.renderPet({...this.state, client_id: this.props.clientId})
+        this.props.toggleForm()
     }
 
     render(){

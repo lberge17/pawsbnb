@@ -13,3 +13,7 @@
 .pointer-cursor {
   cursor: pointer;
 }
+
+.right {
+  text-align: right;
+}

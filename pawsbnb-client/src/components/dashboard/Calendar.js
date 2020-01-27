@@ -35,6 +35,13 @@ export default class Calendar extends React.Component {
         })
     }
 
+    closeAppointment = () => {
+        this.setState({
+            viewAppointment: false,
+            appointment: null
+        })
+    }
+
     formatEvents = () => {
         
         return this.props.appointments.map(appointment => {
@@ -53,14 +60,9 @@ export default class Calendar extends React.Component {
             <div>
                     {this.state.viewAppointment ? 
                         <div className="appointment-container popup">
-                            {/* <h3>Title: {this.state.appointment.title}</h3>
-                            <p>Start: {this.state.appointment.start}</p>
-                            <p>End: {this.state.appointment.end}</p>
-                            <p>Pets: {this.state.appointment.pets}</p>
-                            <p>Services: {this.state.appointment.services}</p>
-                            <p>Medications: {this.state.appointment.medications}</p>
-                            <p>Details: {this.state.appointment.details}</p>
-                            <button>Edit</button> */}
+                            <div className="right">
+                                <a className="pointer-cursor close-btn" onClick={this.closeAppointment}>&times;</a>
+                            </div>
                             <AppointmentForm appointment={this.state.appointment}/>
                         </div> : 
                     null}

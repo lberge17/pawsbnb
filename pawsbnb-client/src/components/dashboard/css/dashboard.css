@@ -58,3 +58,8 @@
     bottom: calc(50% - 300px);
     box-shadow: 5px 10px #888888;
 }
+
+.close-btn {
+    font-size: 2em;
+    margin-right: 5px;
+}

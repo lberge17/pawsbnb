@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchClients } from '../../actions/clientsActions'
-import { addAppointment } from '../../actions/appointmentsActions'
+import { addAppointment, updateAppointment } from '../../actions/appointmentsActions'
 
 class AppointmentForm extends Component {
-    state = {
-        title: "",
-        client_id: "",
-        pets: "",
-        services: "",
-        medications: "",
-        details: "",
-        start: "",
-        end: ""
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            title: props.appointment.title || "",
+            client_id: props.appointment.client_id || "",
+            pets: props.appointment.pets || "",
+            services: props.appointment.services || "",
+            medications: props.appointment.medications || "",
+            details: props.appointment.details || "",
+            start: props.appointment.start || "",
+            end: props.appointment.end || ""
+        }
     }
 
     componentDidMount(){
@@ -28,13 +32,17 @@ class AppointmentForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         console.log(this.state)
-        this.props.addAppointment(this.state)
+        if (this.props.appointment) {
+            this.props.updateAppointment({...this.state, id: this.props.appointment.id})
+        } else {
+            this.props.addAppointment(this.state)
+        }
     }
 
     render() {
         return (
             <div>
-                <h3>Add an Appointment</h3>
+                <h3>{this.props.appointment ? "Update Appointment" : "Add an Appointment"}</h3>
                 {this.props.requesting ? <p>...loading</p> : null}
                 <form onSubmit={this.handleSubmit}>
                     <p>Please make sure your dates are formatted correctly with 24 time</p>
@@ -97,7 +105,7 @@ class AppointmentForm extends Component {
                         value={this.state.end}
                         onChange={this.handleChange}
                     /><br/><br/>
-                    <input type="submit" value="Make Appointment"/><br/><br/>
+                    <input type="submit" value={this.props.appointment ? "Update Appointment" : "Make Appointment"}/><br/><br/>
                 </form>
             </div>
         )
@@ -108,7 +116,8 @@ const mapStateToProps = (state) => state
 
 const mapDispatchToProps = (dispatch) => ({
     fetchClients: () => {dispatch(fetchClients())},
-    addAppointment: (appointment) => {dispatch(addAppointment(appointment))}
+    addAppointment: (appointment) => {dispatch(addAppointment(appointment))},
+    updateAppointment: (appointment) => {dispatch(updateAppointment(appointment))}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppointmentForm)

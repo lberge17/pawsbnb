@@ -48,13 +48,13 @@
 .popup {
     z-index: 3;
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
     background-color: white;
     border: 2px solid black;
-    left: calc(50% - 200px);
-    right: calc(50% - 200px);
-    top: calc(50% - 200px);
-    bottom: calc(50% - 200px);
+    left: calc(50% - 300px);
+    right: calc(50% - 300px);
+    top: calc(50% - 300px);
+    bottom: calc(50% - 300px);
     box-shadow: 5px 10px #888888;
 }

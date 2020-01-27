@@ -3,7 +3,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 // import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-// import AppointmentForm from '../appointments/AppointmentForm'
+import AppointmentForm from '../appointments/AppointmentForm'
 
 export default class Calendar extends React.Component {
     state = {
@@ -53,14 +53,15 @@ export default class Calendar extends React.Component {
             <div>
                     {this.state.viewAppointment ? 
                         <div className="appointment-container popup">
-                            <h3>Title: {this.state.appointment.title}</h3>
+                            {/* <h3>Title: {this.state.appointment.title}</h3>
                             <p>Start: {this.state.appointment.start}</p>
                             <p>End: {this.state.appointment.end}</p>
                             <p>Pets: {this.state.appointment.pets}</p>
                             <p>Services: {this.state.appointment.services}</p>
                             <p>Medications: {this.state.appointment.medications}</p>
                             <p>Details: {this.state.appointment.details}</p>
-                            <button>Edit</button>
+                            <button>Edit</button> */}
+                            <AppointmentForm appointment={this.state.appointment}/>
                         </div> : 
                     null}
                 <FullCalendar 

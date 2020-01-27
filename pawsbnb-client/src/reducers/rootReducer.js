@@ -8,5 +8,5 @@ export default combineReducers({
     business: businessReducer,
     user: userReducer,
     loggedIn: logReducer,
-    clients: clientsReducer
+    clientsInfo: clientsReducer
 });

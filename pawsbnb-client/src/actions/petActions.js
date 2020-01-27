@@ -12,7 +12,7 @@ export function addPet(pet) {
       dispatch({ type: 'START_ADDING_PET_REQUEST' });
       Axios.post(`http://localhost:3000/pets`, {pet}, {withCredentials: true})
         .then(response => {
-            console.log(response.data)
+            console.log(response)
             dispatch({type: 'ADD_PET', pet: response.data.pet })
         })
         .catch(error => console.log(error))

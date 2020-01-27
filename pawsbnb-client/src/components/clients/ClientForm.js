@@ -19,15 +19,8 @@ export default class ClientForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         console.log(this.state)
-        axios.post('http://localhost:3000/clients', {
-                client: this.state
-            }, {withCredentials: true})
-            .then(resp => {
-                console.log(resp)
-                window.location.reload()
-            })
-            .catch(error => console.log('failed clients post fetch', error))
-
+        this.props.addClient(this.state)
+        this.props.toggleClientForm()
     }
 
     render(){

@@ -1,6 +1,14 @@
 export default (state = { clients: [], requesting: false}, action) => {
     let client
     switch (action.type) {
+        case 'START_ADDING_CLIENT_REQUEST':
+
+            return {
+                ...state,
+                clients: [...state.clients],
+                requesting: true
+            }
+
         case 'ADD_CLIENT':
 
             return {
@@ -27,21 +35,21 @@ export default (state = { clients: [], requesting: false}, action) => {
 
         case 'START_ADDING_CLIENTS_REQUEST':
 
-                return {
-                  ...state,
-                  clients: [...state.clients],
-                  requesting: true
-                }
+            return {
+                ...state,
+                clients: [...state.clients],
+                requesting: true
+            }
            
         case 'ADD_CLIENTS':
             
-                return {
-                  ...state,
-                  clients: action.clients,
-                  requesting: false
-                }
+            return {
+                ...state,
+                clients: action.clients,
+                requesting: false
+            }
 
-            case 'START_ADDING_PET_REQUEST':
+        case 'START_ADDING_PET_REQUEST':
 
                 return {
                     ...state,

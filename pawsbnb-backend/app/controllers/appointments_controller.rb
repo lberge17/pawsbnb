@@ -53,6 +53,25 @@ class AppointmentsController < ApplicationController
         end
     end
 
+    def destroy
+        if @current_user && @current_user.business && @current_user.business.appointments.find_by(id: params['id'])
+            appointment = Appointment.find_by(id: params['id'])
+            if appointment.destroy
+                render json: {
+                    status: :deleted
+                }
+            else
+                render json: {
+                    status: 500
+                }
+            end
+        else
+            render json: {
+                status: 401
+            }
+        end
+    end
+
     private
 
     def appointment_params

@@ -4,14 +4,24 @@ export default (state = { clients: [], requesting: false}, action) => {
 
             return {
                 ...state,
-                clients: state.clients.concat(action.client)
+                clients: state.clients.concat(action.client),
+                requesting: false
+            }
+
+        case 'START_REMOVING_CLIENT_REQUEST':
+
+            return {
+                ...state,
+                clients: [...state.clients],
+                requesting: true
             }
         
         case 'REMOVE_CLIENT':
 
             return {
                 ...state,
-                clients: state.clients.filter(client => client.id !== action.id)
+                clients: state.clients.filter(client => client.id !== action.id),
+                requesting: false
             }
 
         case 'START_ADDING_CLIENTS_REQUEST':

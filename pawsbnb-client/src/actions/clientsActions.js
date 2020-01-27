@@ -17,11 +17,16 @@ export function fetchClients() {
         })
         .catch(error => console.log(error))
     };
-  }
+}
 
-export const removeClient = (id) => dispatch => {
-    dispatch({
-        type: 'REMOVE_CLIENT',
-        id
-    })
+export function removeClient(id) {
+    return (dispatch) => {
+      dispatch({ type: 'START_REMOVING_CLIENT_REQUEST' });
+      Axios.delete(`http://localhost:3000/clients/${id}`, {withCredentials: true})
+        .then(response => {
+            console.log(response.data)
+            dispatch({type: 'REMOVE_CLIENT', id })
+        })
+        .catch(error => console.log(error))
+    };
 }

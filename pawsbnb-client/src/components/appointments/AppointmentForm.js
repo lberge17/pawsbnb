@@ -33,7 +33,7 @@ class AppointmentForm extends Component {
         return (
             <div>
                 <h1>Add an Apppointment</h1>
-                {this.props.clientsInfo.requesting ? <p>...loading</p> : null}
+                {this.props.requesting ? <p>...loading</p> : null}
                 <form onSubmit={this.handleSubmit}>
                     <p>Please make sure your dates are formatted correctly with 24 time</p>
                     <p>ex. Apr 28 2018 17:00</p>
@@ -47,7 +47,7 @@ class AppointmentForm extends Component {
                     <label>Client:</label><br/>
                     <select name="clientId" value={this.state.clientId}>
                         <option>Choose an existing client...</option>
-                        {this.props.clientsInfo.clients.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                        {this.props.clients.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                     </select><br/>
                     <label>Pets:</label><br/>
                     <input 

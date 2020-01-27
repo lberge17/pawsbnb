@@ -45,7 +45,7 @@ class Clients extends Component {
         return (
             <div>
                 <h1 style={{textAlign: 'center'},{fontSize: '3em'}}>Clients List</h1>
-                {this.props.clientsInfo.requesting ? <div>loading...</div> : null}
+                {this.props.requesting ? <div>loading...</div> : null}
                 {this.state.clientForm ? <ClientForm toggleClientForm={this.toggleClientForm} addClient={this.props.addClient}/> : <button onClick={this.toggleClientForm}>Add new Client</button>}
                 {this.state.clientId ? <Client clientId={this.state.clientId} removeClientPopup={this.removeClientPopup}/> : null}
                 <table style={{width: '100%'}} className="client-tbl">
@@ -60,7 +60,7 @@ class Clients extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.clientsInfo.clients[0] ? this.props.clientsInfo.clients.map(client => <ClientRow key={client.id} deleteClient={this.deleteClient} client={client} loadClient={this.loadClient}/>) : null}
+                        {this.props.clients[0] ? this.props.clients.map(client => <ClientRow key={client.id} deleteClient={this.deleteClient} client={client} loadClient={this.loadClient}/>) : null}
                     </tbody>
                 </table>
             </div>

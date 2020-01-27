@@ -3,6 +3,7 @@ import businessReducer from './businessReducer'
 import userReducer from './userReducer'
 import logReducer from './logReducer'
 import clientsReducer from './clientsReducer'
+import fetchReducer from './fetchReducer'
 
 export default combineReducers({
     business: businessReducer,

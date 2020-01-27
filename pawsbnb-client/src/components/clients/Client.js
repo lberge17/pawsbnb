@@ -24,7 +24,7 @@ class Client extends Component {
 
 
     render(){
-        const {name, phone, email, address, emergency_contact, pets} = this.props.clientsInfo.clients.find(c => c.id === this.props.clientId)
+        const {name, phone, email, address, emergency_contact, pets} = this.props.clients.find(c => c.id === this.props.clientId)
         console.log(this.props)
 
         return (

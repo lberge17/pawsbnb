@@ -29,7 +29,7 @@ export function fetchAppointments() {
 export function updateAppointment(appointment) {
     return (dispatch) => {
         dispatch({ type: 'START_FETCH_REQUEST' });
-        Axios.patch(`http://localhost://appointments/${appointment.id}`, {...appointment}, { withCredentials: true })
+        Axios.patch(`http://localhost:3000/appointments/${appointment.id}`, {...appointment}, { withCredentials: true })
             .then(response => {
                 console.log(response)
                 dispatch({type: 'UPDATE_APPOINTMENT', appointment: response.data.appointment })

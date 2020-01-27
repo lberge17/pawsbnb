@@ -4,9 +4,8 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 // import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 // import AppointmentForm from '../appointments/AppointmentForm'
-import { connect } from 'react-redux'
 
-class Calendar extends React.Component {
+export default class Calendar extends React.Component {
     state = {
         viewAppointment: false,
         appointment: null
@@ -17,13 +16,14 @@ class Calendar extends React.Component {
     }
 
     handleEventDrop = (info) => {
-        console.log(info.event.start)
+        console.log(info)
 
         if(window.confirm("Are you sure you want to change the event date?")){
             console.log('change confirmed')
-            
+            this.props.updateAppointment({...info.event.extendedProps, start: info.event.start, end: info.event.end})
         } else {
             console.log('change denied')
+            window.location.reload()
         }
     }
 
@@ -77,7 +77,3 @@ class Calendar extends React.Component {
     }
   
 }
-
-const mapStateToProps = (state) => state
-
-export default connect(mapStateToProps)(Calendar)

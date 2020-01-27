@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { addBusiness, removeBusiness } from './actions/businessActions'
 import { addUser, removeUser, login, logout } from './actions/userActions'
 import Clients from './components/clients/Clients'
+import Appointments from './components/appointments/Appointments'
 import {LogoutButton} from './components/auth/LogoutButton'
 
 class App extends Component {
@@ -101,6 +102,10 @@ class App extends Component {
           <Route
             exact path='/clients'
             component={Clients}
+          />
+          <Route
+            exact path='/appointments'
+            component={Appointments}
           />
           <Route
             path='/'

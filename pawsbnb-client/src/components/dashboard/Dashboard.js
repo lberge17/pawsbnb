@@ -41,8 +41,6 @@ class Dashboard extends Component {
                         <hr/>
                         <a href="/clients">Clients</a>
                         <hr/>
-                        <a href="/clients/new">Add New Client</a>
-                        <hr/>
                         <a href="#">Add Appointments</a>
                         <hr/>
                     </div>

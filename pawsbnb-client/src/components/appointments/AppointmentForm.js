@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchClients } from '../../actions/clientsActions'
-import { addAppointment, updateAppointment } from '../../actions/appointmentsActions'
+import { addAppointment, updateAppointment, deleteAppointment } from '../../actions/appointmentsActions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 class AppointmentForm extends Component {
     constructor(props) {
@@ -36,6 +38,16 @@ class AppointmentForm extends Component {
             this.props.updateAppointment({...this.state, id: this.props.appointment.id})
         } else {
             this.props.addAppointment(this.state)
+        }
+    }
+
+    confirmDelete = () => {
+        if(window.confirm("Are you sure you wish to delete this event?")) {
+            console.log('deleting event')
+            this.props.deleteAppointment(this.props.appointment.id)
+            this.props.closeAppointment() 
+        } else {
+            console.log('canceling event deletion')
         }
     }
 
@@ -106,6 +118,7 @@ class AppointmentForm extends Component {
                         onChange={this.handleChange}
                     /><br/><br/>
                     <input type="submit" value={this.props.appointment.title ? "Update Appointment" : "Make Appointment"}/><br/><br/>
+                    {this.props.appointment.title ? <div className="pointer-cursor"><FontAwesomeIcon icon={faTrash} onClick={this.confirmDelete}/><br/><br/></div> : null}
                 </form>
             </div>
         )
@@ -117,7 +130,8 @@ const mapStateToProps = (state) => state
 const mapDispatchToProps = (dispatch) => ({
     fetchClients: () => {dispatch(fetchClients())},
     addAppointment: (appointment) => {dispatch(addAppointment(appointment))},
-    updateAppointment: (appointment) => {dispatch(updateAppointment(appointment))}
+    updateAppointment: (appointment) => {dispatch(updateAppointment(appointment))},
+    deleteAppointment: (id) => {dispatch(deleteAppointment(id))}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppointmentForm)

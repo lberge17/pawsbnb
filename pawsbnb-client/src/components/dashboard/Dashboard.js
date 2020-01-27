@@ -8,8 +8,44 @@ import { fetchAppointments, updateAppointment } from '../../actions/appointments
 class Dashboard extends Component {
     state = {
         form: false,
-        toggleHam: false
+        toggleHam: false,
+        viewAppointment: false,
+        appointment: null,
+        newAppointment: false
     }
+
+    openAppointment = (appointment) => {
+        this.setState({
+            viewAppointment: true,
+            appointment: appointment,
+            newAppointment: false
+        })
+    }
+
+    closeAppointment = () => {
+        this.setState({
+            viewAppointment: false,
+            appointment: null,
+            newAppointment: false
+        })
+    }
+
+    openNewAppointment = () => {
+        this.setState({
+            viewAppointment: false,
+            appointment: null,
+            newAppointment: true
+        })
+    }
+
+    closeNewAppointment = () => {
+        this.setState({
+            viewAppointment: false,
+            appointment: null,
+            newAppointment: false
+        })
+    }
+
 
     handleFormLoad = () => {
         console.log('handling form load')
@@ -46,7 +82,7 @@ class Dashboard extends Component {
                         <hr/>
                         <a href="/clients">Clients</a>
                         <hr/>
-                        <a href="#">Add Appointments</a>
+                        <a onClick={this.openNewAppointment}>Add Appointments</a>
                         <hr/>
                     </div>
                 </div>
@@ -57,7 +93,17 @@ class Dashboard extends Component {
                 }
                 <div className="calendar-container">
                     <h1>Your Calendar</h1>
-                    <Calendar appointments={this.props.appointments} updateAppointment={this.props.updateAppointment}/>
+                    <Calendar 
+                        appointments={this.props.appointments} 
+                        updateAppointment={this.props.updateAppointment} 
+                        viewAppointment={this.state.viewAppointment}
+                        newAppointment={this.state.newAppointment}
+                        openAppointment={this.openAppointment} 
+                        closeAppointment={this.closeAppointment} 
+                        openNewAppointment={this.openNewAppointment} 
+                        closeNewAppointment={this.closeNewAppointment}
+                        appointment={this.state.appointment}
+                    />
                 </div>
             </div>
         )

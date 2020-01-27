@@ -6,14 +6,11 @@ import interactionPlugin from '@fullcalendar/interaction'
 import AppointmentForm from '../appointments/AppointmentForm'
 
 export default class Calendar extends React.Component {
-    state = {
-        viewAppointment: false,
-        appointment: null
-    }
-
-    handleDateClick = (arg) => {
-        console.log(arg.dateStr)
-    }
+    // state = {
+    //     viewAppointment: false,
+    //     appointment: null,
+    //     newAppointment: false
+    // }
 
     handleEventDrop = (info) => {
         console.log(info)
@@ -29,18 +26,37 @@ export default class Calendar extends React.Component {
 
     handleEventClick= ({event}) => {
         console.log(event.extendedProps)
-        this.setState({
-            viewAppointment: true,
-            appointment: event.extendedProps
-        })
+        this.props.openAppointment(event.extendedProps)
+        // this.setState({
+        //     viewAppointment: true,
+        //     appointment: event.extendedProps,
+        //     newAppointment: false
+        // })
     }
 
-    closeAppointment = () => {
-        this.setState({
-            viewAppointment: false,
-            appointment: null
-        })
-    }
+    // closeAppointment = () => {
+    //     // this.setState({
+    //     //     viewAppointment: false,
+    //     //     appointment: null,
+    //     //     newAppointment: false
+    //     // })
+    // }
+
+    // openNewAppointment = () => {
+    //     // this.setState({
+    //     //     viewAppointment: false,
+    //     //     appointment: null,
+    //     //     newAppointment: true
+    //     // })
+    // }
+
+    // closeNewAppointment = () => {
+    //     // this.setState({
+    //     //     viewAppointment: false,
+    //     //     appointment: null,
+    //     //     newAppointment: false
+    //     // })
+    // }
 
     formatEvents = () => {
         
@@ -58,12 +74,20 @@ export default class Calendar extends React.Component {
         console.log(this.formatEvents())
         return (
             <div>
-                    {this.state.viewAppointment ? 
+                    {this.props.viewAppointment ? 
                         <div className="appointment-container popup">
                             <div className="right">
-                                <a className="pointer-cursor close-btn" onClick={this.closeAppointment}>&times;</a>
+                                <a className="pointer-cursor close-btn" onClick={this.props.closeAppointment}>&times;</a>
                             </div>
-                            <AppointmentForm appointment={this.state.appointment}/>
+                            <AppointmentForm appointment={this.props.appointment}/>
+                        </div> : 
+                    null}
+                    {this.props.newAppointment ? 
+                        <div className="appointment-container popup">
+                            <div className="right">
+                                <a className="pointer-cursor close-btn" onClick={this.props.closeNewAppointment}>&times;</a>
+                            </div>
+                            <AppointmentForm appointment={{}}/>
                         </div> : 
                     null}
                 <FullCalendar 

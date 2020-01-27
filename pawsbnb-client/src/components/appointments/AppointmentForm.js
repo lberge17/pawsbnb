@@ -42,7 +42,7 @@ class AppointmentForm extends Component {
     render() {
         return (
             <div>
-                <h3>{this.props.appointment ? "Update Appointment" : "Add an Appointment"}</h3>
+                <h3>{this.props.appointment.title ? "Update Appointment" : "Add an Appointment"}</h3>
                 {this.props.requesting ? <p>...loading</p> : null}
                 <form onSubmit={this.handleSubmit}>
                     <p>Please make sure your dates are formatted correctly with 24 time</p>
@@ -105,7 +105,7 @@ class AppointmentForm extends Component {
                         value={this.state.end}
                         onChange={this.handleChange}
                     /><br/><br/>
-                    <input type="submit" value={this.props.appointment ? "Update Appointment" : "Make Appointment"}/><br/><br/>
+                    <input type="submit" value={this.props.appointment.title ? "Update Appointment" : "Make Appointment"}/><br/><br/>
                 </form>
             </div>
         )

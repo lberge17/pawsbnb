@@ -3,8 +3,13 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 // import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+// import AppointmentForm from '../appointments/AppointmentForm'
 
 export default class Calendar extends React.Component {
+    state = {
+        viewAppointment: false,
+        appointment: null
+    }
 
     handleDateClick = (arg) => {
         console.log(arg.dateStr)
@@ -20,7 +25,11 @@ export default class Calendar extends React.Component {
     }
 
     handleEventClick= ({event}) => {
-        console.log(event)
+        console.log(event.extendedProps)
+        this.setState({
+            viewAppointment: true,
+            appointment: event.extendedProps
+        })
     }
 
     formatEvents = () => {
@@ -30,23 +39,37 @@ export default class Calendar extends React.Component {
 
             let startTime = new Date(start)
             let endTime = new Date(end)
-            
+
             return {title, start: startTime, end: endTime, extendedProps: {...appointment}}
         })
     }
 
     render() {
         console.log(this.formatEvents())
-      return (
-        <FullCalendar 
-            defaultView="dayGridMonth" 
-            plugins={[dayGridPlugin, interactionPlugin]}
-            dateClick={this.handleDateClick}
-            editable={true}
-            eventDrop={this.handleEventDrop}
-            eventClick={this.handleEventClick}
-            events={this.formatEvents()}
-        />
+        return (
+            <div>
+                    {this.state.viewAppointment ? 
+                        <div className="appointment-container popup">
+                            <h3>Title: {this.state.appointment.title}</h3>
+                            <p>Start: {this.state.appointment.start}</p>
+                            <p>End: {this.state.appointment.end}</p>
+                            <p>Pets: {this.state.appointment.pets}</p>
+                            <p>Services: {this.state.appointment.services}</p>
+                            <p>Medications: {this.state.appointment.medications}</p>
+                            <p>Details: {this.state.appointment.details}</p>
+                            <button>Edit</button>
+                        </div> : 
+                    null}
+                <FullCalendar 
+                    defaultView="dayGridMonth" 
+                    plugins={[dayGridPlugin, interactionPlugin]}
+                    dateClick={this.handleDateClick}
+                    editable={true}
+                    eventDrop={this.handleEventDrop}
+                    eventClick={this.handleEventClick}
+                    events={this.formatEvents()}
+                />
+            </div>
       )
     }
   

@@ -7,6 +7,7 @@ import './css/clients.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
+import {addClient, removeClient} from '../../actions/clientsActions'
 
 class Clients extends Component {
     state = {
@@ -55,7 +56,6 @@ class Clients extends Component {
         return (
             <div>
                 <h1 style={{textAlign: 'center'},{fontSize: '3em'}}>Clients List</h1>
-                {/* <a href='/clients/new'>Add a new Client</a> */}
                 {this.state.clientForm ? <ClientForm toggleClientForm={this.toggleClientForm}/> : <button onClick={this.toggleClientForm}>Add new Client</button>}
                 {this.state.client ? <Client client={this.state.client} removeClient={this.removeClient}/> : null}
                 <table style={{width: '100%'}} className="client-tbl">
@@ -80,4 +80,9 @@ class Clients extends Component {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps)(Clients)
+const mapDispatchToProps = dispatch => ({
+    addClient: (client) => dispatch(addClient(client)),
+    removeClient: (id) => dispatch(addClient(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Clients)

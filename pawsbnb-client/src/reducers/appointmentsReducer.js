@@ -12,6 +12,10 @@ export default (state = [], action) => {
 
             return [...state.filter(appointment => appointment.id !== action.appointment.id), action.appointment]
 
+        case 'DELETE_APPOINTMENT':
+
+            return state.filter(appointment => appointment.id !== action.id)
+
         default:
 
             return state

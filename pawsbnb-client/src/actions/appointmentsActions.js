@@ -39,3 +39,17 @@ export function updateAppointment(appointment) {
 
     }
 }
+
+export function deleteAppointment(id) {
+    return (dispatch) => {
+        dispatch({ type: 'START_FETCH_REQUEST' });
+        Axios.patch(`http://localhost:3000/appointments/${id}`, { withCredentials: true })
+            .then(response => {
+                console.log(response)
+                dispatch({type: 'DELETE_APPOINTMENT', id })
+                 dispatch({ type: 'FINISH_FETCH_REQUEST' })
+            })
+            .catch(error => console.log(error))
+
+    }
+}

@@ -14,6 +14,7 @@ export function addPet(pet) {
         .then(response => {
             console.log(response)
             dispatch({type: 'ADD_PET', pet: response.data.pet })
+            dispatch({ type: 'FINISH_ADDING_PET_REQUEST' })
         })
         .catch(error => console.log(error))
     };

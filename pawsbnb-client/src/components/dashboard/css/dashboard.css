@@ -8,9 +8,10 @@
 
 .hamIcon {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 5px;
+    left: 5px;
     overflow: hidden;
+    font-size: 2em;
 }
 
 .sidebar {

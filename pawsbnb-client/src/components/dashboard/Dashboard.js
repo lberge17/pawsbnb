@@ -4,6 +4,8 @@ import Calendar from './Calendar'
 import './css/dashboard.css'
 import { connect } from 'react-redux';
 import { fetchAppointments, updateAppointment } from '../../actions/appointmentsActions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 class Dashboard extends Component {
     state = {
@@ -73,7 +75,7 @@ class Dashboard extends Component {
 
         return (
             <div>
-                <button className="hamIcon" onClick={this.toggle}><h1>&#9776;</h1></button>
+                <div className="hamIcon pointer-cursor" onClick={this.toggle}><FontAwesomeIcon icon={faBars}/></div>
                 <div className="side-container">
                     <div id="mySidebar" className={this.state.toggleHam ? "sidebar toggle" : "sidebar"}>
                         <a href="#" className="close" onClick={this.toggle}>&times;</a>
@@ -87,10 +89,20 @@ class Dashboard extends Component {
                     </div>
                 </div>
 
-                <h1>{this.props.business.title ? this.props.business.title : 'Please click the menu icon to add your Business'}</h1>
+                <h1>Dashboard</h1>
+                <div>{this.props.business.title ? 
+                    <div>
+                        <h3>Welcome back {this.props.user.name}!</h3>
+                        <p>Your Business: {this.props.business.title}</p>
+                        <p>Description: {this.props.business.description}</p>
+                        <p>Location: {this.props.business.location}</p>
+                    </div> : 
+                    'Please Add Your Business'}
+                </div>
                 {this.state.form ? 
                     <BusinessForm user={this.props.user} business={this.props.business} location={this.props.location}/> : null
                 }
+                <p>*Click the icon on the left to open the menu*</p>
                 <div className="calendar-container">
                     <h1>Your Calendar</h1>
                     <Calendar 

@@ -34,10 +34,12 @@ class AppointmentForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         console.log(this.state)
-        if (this.props.appointment) {
+        if (this.props.appointment.title) {
             this.props.updateAppointment({...this.state, id: this.props.appointment.id})
+            this.props.closeAppointment()
         } else {
             this.props.addAppointment(this.state)
+            this.props.closeNewAppointment()
         }
     }
 

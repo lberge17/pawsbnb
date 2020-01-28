@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import { addClient, removeClient } from '../../actions/clientsActions'
+import Auth from '../auth/Auth.js'
 
 class Clients extends Component {
     state = {
@@ -39,8 +40,9 @@ class Clients extends Component {
     render(){
         console.log(this.props)
         return (
+            <>
+            {this.props.auth.loggedIn ?
             <div>
-                {this.renderRedirectHome()}
                 <h1 style={{textAlign: 'center'},{fontSize: '3em'}}>Clients List</h1>
                 {this.props.requesting ? <div>loading...</div> : null}
                 {this.state.clientForm ? <ClientForm toggleClientForm={this.toggleClientForm} addClient={this.props.addClient}/> : <button onClick={this.toggleClientForm}>Add new Client</button>}
@@ -60,7 +62,9 @@ class Clients extends Component {
                         {this.props.auth.clients[0] ? this.props.auth.clients.map(client => <ClientRow key={client.id} deleteClient={this.deleteClient} client={client} loadClient={this.loadClient}/>) : null}
                     </tbody>
                 </table>
-            </div>
+            </div> : 
+            <Auth/>}
+            </>
         )
     }
 }

@@ -1,0 +1,29 @@
+.app-form {
+    padding: 0;
+}
+
+.app-form > p {
+    font-size: 0.8em;
+}
+
+.app-form > label {
+    font-size: 1em;
+}
+
+.app-form > input {
+    font-size: 1em;
+    height: 20px;
+    width: 80%;
+}
+
+.app-form > textarea {
+    font: 1em;
+    height: 30px;
+    width: 80%;
+}
+
+.app-form > input[type="submit"] {
+    height: 40px;
+    background: rgb(54, 34, 47);
+    color: white;
+}

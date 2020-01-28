@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addAppointment, updateAppointment, deleteAppointment } from '../../actions/appointmentsActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import './css/appointments.css'
 
 class AppointmentForm extends Component {
     constructor(props) {
@@ -53,7 +54,7 @@ class AppointmentForm extends Component {
             <div>
                 <h3>{this.props.appointment.title ? "Update Appointment" : "Add an Appointment"}</h3>
                 {this.props.requesting ? <p>...loading</p> : null}
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="app-form">
                     <p>Please make sure your dates are formatted correctly with 24 time</p>
                     <p>ex. Apr 28 2018 17:00</p>
                     <label>Title:</label><br/>

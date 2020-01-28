@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { updateAppointment } from '../../actions/appointmentsActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import Auth from '../auth/Auth'
 
 class Dashboard extends Component {
     state = {
@@ -64,8 +65,9 @@ class Dashboard extends Component {
 
     render() {
         return (
+            <>
+            {this.props.auth.loggedIn ? 
             <div>
-                {this.props.renderRedirectHome()}
                 <div className="hamIcon pointer-cursor" onClick={this.toggle}><FontAwesomeIcon icon={faBars}/></div>
                 <div className="side-container">
                     <div id="mySidebar" className={this.state.toggleHam ? "sidebar toggle" : "sidebar"}>
@@ -108,7 +110,9 @@ class Dashboard extends Component {
                         appointment={this.state.appointment}
                     />
                 </div>
-            </div>
+            </div> : <Auth/>
+            }
+            </>
         )
     }
 }
@@ -116,7 +120,6 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => ({
-    // fetchAppointments: () => {dispatch(fetchAppointments())},
     updateAppointment: (appointment) => {dispatch(updateAppointment(appointment))} 
 })
 

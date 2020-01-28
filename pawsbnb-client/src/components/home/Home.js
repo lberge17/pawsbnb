@@ -6,7 +6,6 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                {this.props.renderRedirectDashboard()}
                 <div className="home-wrapper">
                     <div className="home">
                         <a className="panel img1" href="/login">

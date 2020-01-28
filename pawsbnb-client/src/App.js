@@ -17,18 +17,11 @@ import {LogoutButton} from './components/auth/LogoutButton'
 class App extends Component {
   handleLogout = (history) => {
     this.props.fetchLogout()
-    // history.push('/')
   }
 
   renderRedirectDashboard = () => {
     if (this.props.auth.loggedIn) {
       return <Redirect to='/dashboard' />
-    }
-  }
-
-  renderRedirectHome = () => {
-    if (!this.props.auth.loggedIn) {
-      return <Redirect to='/' />
     }
   }
 
@@ -44,8 +37,7 @@ class App extends Component {
             exact path='/'
             render={props => (
               <Home 
-                { ...props } 
-                renderRedirectDashboard={this.renderRedirectDashboard}
+                { ...props }
               />
             )}
           />
@@ -80,7 +72,6 @@ class App extends Component {
             render={props => (
               <Dashboard 
                 { ...props } 
-                renderRedirectHome={this.renderRedirectHome} 
               /> 
             )}
           />
@@ -93,7 +84,6 @@ class App extends Component {
             render={props => (
               <Clients 
                 {...props} 
-                renderRedirectHome={this.renderRedirectHome}
               />
             )}
             

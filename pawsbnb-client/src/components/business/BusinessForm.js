@@ -59,18 +59,20 @@ export default class BusinessForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.props.business.title ? this.handleUpdate : this.handleSubmit}>
-                <h2>{this.props.business.title ? 'Edit':'Add'} Your Business</h2>
-                <input type="text" name="title" value={this.state.title} placeholder="title" onChange={this.handleChange} required/><br/><br/>
-                <textarea name="description" value={this.state.description} placeholder="description" onChange={this.handleChange}></textarea><br/><br/>
-                <textarea name="services" value={this.state.services} placeholder="services you offer" onChange={this.handleChange}></textarea><br/><br/>
-                <input type="text" name="location" value={this.state.location} placeholder="location" required onChange={this.handleChange}/><br/>
-                <input type="number" name="zip" value={this.state.zip} placeholder="zip code" required onChange={this.handleChange}/><br/>
-                <input type="text" name="phone" value={this.state.phone} placeholder="phone#" onChange={this.handleChange}/><br/>
-                <input type="text" name="email" value={this.state.email} placeholder="email" onChange={this.handleChange}/><br/>
-                <input type="text" name="website" value={this.state.website} placeholder="website (https://www.ex.com)" onChange={this.handleChange}/><br/>
-                <input type="submit" value={this.props.business.title ? 'Update Business' : 'Add Business'}/>
-            </form>
+            <div className="form-container">
+                <form className="busi-form box" onSubmit={this.props.business.title ? this.handleUpdate : this.handleSubmit}>
+                    <h2 className="busi-form">{this.props.business.title ? 'Edit':'Add'} Your Business</h2>
+                    <input className="busi-form item" type="text" name="title" value={this.state.title} placeholder="title" onChange={this.handleChange} required/><br/><br/>
+                    <textarea className="busi-form item" name="description" value={this.state.description} placeholder="description" onChange={this.handleChange}></textarea><br/><br/>
+                    <textarea className="busi-form item" name="services" value={this.state.services} placeholder="services you offer" onChange={this.handleChange}></textarea><br/><br/>
+                    <input className="busi-form item" type="text" name="location" value={this.state.location} placeholder="location" required onChange={this.handleChange}/><br/>
+                    <input className="busi-form item" type="number" name="zip" value={this.state.zip} placeholder="zip code" required onChange={this.handleChange}/><br/>
+                    <input className="busi-form item" type="text" name="phone" value={this.state.phone} placeholder="phone#" onChange={this.handleChange}/><br/>
+                    <input className="busi-form item" type="text" name="email" value={this.state.email} placeholder="email" onChange={this.handleChange}/><br/>
+                    <input className="busi-form item" type="text" name="website" value={this.state.website} placeholder="website (https://www.ex.com)" onChange={this.handleChange}/><br/>
+                    <input className="busi-form item" type="submit" value={this.props.business.title ? 'Update Business' : 'Add Business'}/>
+                </form>
+            </div>
         )
     }
 }

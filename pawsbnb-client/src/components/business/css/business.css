@@ -16,3 +16,41 @@
 .card-logo {
     width: 80px;
 }
+
+.form-container {
+    text-align: center;
+    width: 100%;
+}
+
+.busi-form.box {
+    padding: 10px;
+    color: rgb(41, 24, 35);
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 750x;
+    text-align: center;
+    background: rgb(151, 73, 114);
+}
+
+h2.busi-form {
+    font-size: 2em;
+}
+
+.busi-form.item {
+    width: 80%;
+    font-size: 1em;
+}
+
+textarea.busi-form.item {
+    width: 80%;
+    font-size: 1em;
+    height: 80px;
+}
+
+.busi-form[type="submit"] {
+    background: rgb(66, 39, 56);
+    color: white;
+    height: 50px;
+    font-size: 1.5em;
+}

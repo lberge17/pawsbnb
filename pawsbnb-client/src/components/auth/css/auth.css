@@ -6,6 +6,10 @@
 
 .logout {
     font-size: 1em;
+    margin: 10px;
+    width: 100px;
+    height: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .auth-background {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import Axios from 'axios';
 import { connect } from 'react-redux';
 import { addBusiness, updateBusiness } from '../../actions/businessActions'
-import { ThirdPartyDraggable } from '@fullcalendar/interaction';
 
 class BusinessForm extends Component {
     constructor(props) {
@@ -30,12 +28,14 @@ class BusinessForm extends Component {
         event.preventDefault()
 
         this.props.addBusiness({business: this.state})
+        this.props.closeForm()
     }
 
     handleUpdate = (event) => {
         event.preventDefault()
 
         this.props.updateBusiness({...this.state, id: this.props.auth.business.id})
+        this.props.closeForm()
     }
 
     render() {

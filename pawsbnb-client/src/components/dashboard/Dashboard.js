@@ -73,9 +73,9 @@ class Dashboard extends Component {
                 <div className="hamIcon pointer-cursor" onClick={this.toggle}><FontAwesomeIcon icon={faBars}/></div>
                 <div className="side-container">
                     <div id="mySidebar" className={this.state.toggleHam ? "sidebar toggle" : "sidebar"}>
-                        <a href="#" className="close" onClick={this.toggle}>&times;</a>
+                        <a className="close pointer-cursor" onClick={this.toggle}>&times;</a>
                         <hr/>
-                        <a href="#" onClick={this.handleFormLoad}>Add/Update Business</a>
+                        <a className="pointer-cursor" onClick={this.handleFormLoad}>Add/Update Business</a>
                         <hr/>
                         <a href="/clients">Clients</a>
                         <hr/>

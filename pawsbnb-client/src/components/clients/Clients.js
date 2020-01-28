@@ -51,8 +51,8 @@ class Clients extends Component {
                     <thead>
                         <tr>
                             <th>Full Name</th>
-                            <th>Email</th>
                             <th>Phone</th>
+                            <th>Email</th>
                             <th>Address</th>
                             <th>Emergency Contact</th>
                             <th><FontAwesomeIcon icon={faTrash} /></th>

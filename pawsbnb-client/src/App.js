@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Home from './components/home/Home'
 import Dashboard from './components/dashboard/Dashboard'
 import About from './components/about/About'
@@ -91,7 +91,9 @@ class App extends Component {
           <Route
             exact path='/dashboard'
             render={props => (
-              <Dashboard { ...props } loggedIn={this.props.loggedIn} />
+              this.props.loggedIn ? 
+              <Dashboard { ...props } loggedIn={this.props.loggedIn} /> :
+              <Redirect to='/'/>
             )}
           />
           <Route

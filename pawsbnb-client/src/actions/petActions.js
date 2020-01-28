@@ -9,12 +9,12 @@ export const removePet = (pet) => dispatch => {
 
 export function addPet(pet) {
     return (dispatch) => {
-      dispatch({ type: 'START_ADDING_PET_REQUEST' });
+      dispatch({ type: 'START_FETCH_REQUEST' });
       Axios.post(`http://localhost:3000/pets`, {pet}, {withCredentials: true})
         .then(response => {
             console.log(response)
             dispatch({type: 'ADD_PET', pet: response.data.pet })
-            dispatch({ type: 'FINISH_ADDING_PET_REQUEST' })
+            dispatch({ type: 'FINISH_FETCH_REQUEST' })
         })
         .catch(error => console.log(error))
     };

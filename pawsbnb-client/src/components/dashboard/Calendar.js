@@ -87,7 +87,7 @@ export default class Calendar extends React.Component {
                             <div className="right">
                                 <a className="pointer-cursor close-btn" onClick={this.props.closeNewAppointment}>&times;</a>
                             </div>
-                            <AppointmentForm appointment={{}}/>
+                            <AppointmentForm appointment={{}} closeNewAppointment={this.props.closeNewAppointment}/>
                         </div> : 
                     null}
                 <FullCalendar 

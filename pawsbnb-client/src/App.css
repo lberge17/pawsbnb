@@ -8,6 +8,7 @@
   min-height: 100vh;
   overflow: hidden;
   text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .pointer-cursor {

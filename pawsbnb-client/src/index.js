@@ -7,8 +7,15 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
+import WebFont from 'webfontloader';
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
+
+WebFont.load({
+    google: {
+        families: ['Titillium Web:300,400,700', 'sans-serif']
+    }
+});
 
 ReactDOM.render((
     <Provider store={store}>

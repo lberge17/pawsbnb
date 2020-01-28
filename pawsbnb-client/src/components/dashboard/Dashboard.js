@@ -67,12 +67,6 @@ class Dashboard extends Component {
     }
 
     render() {
-        if (!this.props.loggedIn) {
-            this.props.history.push('/')
-        }
-
-        console.log(this.props.user)
-
         return (
             <div>
                 <div className="hamIcon pointer-cursor" onClick={this.toggle}><FontAwesomeIcon icon={faBars}/></div>

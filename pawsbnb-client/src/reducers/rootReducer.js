@@ -5,12 +5,14 @@ import logReducer from './logReducer'
 import clientsReducer from './clientsReducer'
 import fetchReducer from './fetchReducer'
 import appointmentsReducer from './appointmentsReducer'
+import authReducer from './authReducer'
 
 export default combineReducers({
-    business: businessReducer,
-    user: userReducer,
-    loggedIn: logReducer,
-    clients: clientsReducer,
-    appointments: appointmentsReducer,
+    // business: businessReducer,
+    // user: userReducer,
+    // loggedIn: logReducer,
+    // clients: clientsReducer,
+    // appointments: appointmentsReducer,
     requesting: fetchReducer,
+    auth: authReducer
 });

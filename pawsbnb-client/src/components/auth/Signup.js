@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './css/auth.css';
-// axios helps with api calls
+import Logo from '../../logo/pawsbnb-logo.png'
 import axios from 'axios';
 
 export default class Signup extends Component {
@@ -48,42 +48,45 @@ export default class Signup extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit} className="auth-form">
-                    <input 
-                        type="text" 
-                        name="name" 
-                        value={this.state.name} 
-                        onChange={this.handleChange} 
-                        placeholder="Full Name" 
-                        required
-                    /><br/>
-                    <input
-                        type="email" 
-                        name="email" 
-                        value={this.state.email} 
-                        onChange={this.handleChange} 
-                        placeholder="Email" 
-                        required
-                    /><br/>
-                    <input 
-                        type="password" 
-                        name="password" 
-                        value={this.state.password} 
-                        onChange={this.handleChange} 
-                        placeholder="Password" 
-                        required
-                    /><br/>
-                    <input 
-                        type="password" 
-                        name="password_confirmation" 
-                        value={this.state.password_confirmation} 
-                        onChange={this.handleChange} 
-                        placeholder="Confirm Password" 
-                        required
-                    /><br/>
-                    <input type="submit" value="Signup"/>
-                </form>
+            <div className="auth-background">
+                <div className="auth-box signup">
+                    <img src={Logo} alt="logo" className="auth-logo"/>
+                    <form onSubmit={this.handleSubmit} className="auth-form">
+                        <input 
+                            type="text" 
+                            name="name" 
+                            value={this.state.name} 
+                            onChange={this.handleChange} 
+                            placeholder="Full Name" 
+                            required
+                        /><br/>
+                        <input
+                            type="email" 
+                            name="email" 
+                            value={this.state.email} 
+                            onChange={this.handleChange} 
+                            placeholder="Email" 
+                            required
+                        /><br/>
+                        <input 
+                            type="password" 
+                            name="password" 
+                            value={this.state.password} 
+                            onChange={this.handleChange} 
+                            placeholder="Password" 
+                            required
+                        /><br/>
+                        <input 
+                            type="password" 
+                            name="password_confirmation" 
+                            value={this.state.password_confirmation} 
+                            onChange={this.handleChange} 
+                            placeholder="Confirm Password" 
+                            required
+                        /><br/>
+                        <input type="submit" value="Signup"/>
+                    </form>
+                </div>
             </div>
         )
     }

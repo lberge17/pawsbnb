@@ -52,8 +52,10 @@ class Dashboard extends Component {
 
     handleFormLoad = () => {
         console.log('handling form load')
-        this.setState({
-            form: true
+        this.setState(prevState => {
+            return {
+                form: !prevState.form
+            }
         })
     }
 
@@ -93,7 +95,7 @@ class Dashboard extends Component {
                     'Please Add Your Business'}
                 </div>
                 {this.state.form ? 
-                    <BusinessForm user={this.props.auth.user} business={this.props.auth.business} location={this.props.location}/> : null
+                    <BusinessForm user={this.props.auth.user} business={this.props.auth.business} location={this.props.location} closeForm={this.handleFormLoad}/> : null
                 }
                 <p>*Click the icon on the left to open the menu*</p>
                 <div className="calendar-container">

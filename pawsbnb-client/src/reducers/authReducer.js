@@ -93,9 +93,14 @@ export default (state = {loggedIn: false, user: {}, business: {}, clients: [], a
 
             return {
                 ...state,
-                business: {
-                    ...action.business
-                }
+                business: action.business
+            }
+
+        case 'UPDATE_BUSINESS':
+    
+            return {
+                ...state, 
+                business: action.business
             }
             
         case 'REMOVE_BUSINESS':

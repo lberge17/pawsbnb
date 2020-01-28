@@ -54,3 +54,7 @@ textarea.busi-form.item {
     height: 50px;
     font-size: 1.5em;
 }
+
+.close {
+    text-align: right;
+}

@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
+import { connect } from 'react-redux';
+import { addBusiness, updateBusiness } from '../../actions/businessActions'
+import { ThirdPartyDraggable } from '@fullcalendar/interaction';
 
-export default class BusinessForm extends Component {
+class BusinessForm extends Component {
     constructor(props) {
         super(props);
         console.log(props)
         this.state = {
-            title: props.business.title || "",
-            description: props.business.description || "",
-            services: props.business.services || "",
-            location: props.business.location || "",
-            zip: props.business.zip || "",
-            phone: props.business.phone || "",
-            email: props.business.email || "",
-            website: props.business.website || ""
+            title: props.auth.business.title || "",
+            description: props.auth.business.description || "",
+            services: props.auth.business.services || "",
+            location: props.auth.business.location || "",
+            zip: props.auth.business.zip || "",
+            phone: props.auth.business.phone || "",
+            email: props.auth.business.email || "",
+            website: props.auth.business.website || ""
         }
     }
 
@@ -26,42 +29,21 @@ export default class BusinessForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        Axios.post('http://localhost:3000/businesses', {
-                business: this.state
-            }, { 
-                withCredentials: true 
-            })
-            .then(resp => {
-                console.log(resp)
-                window.location.reload()
-            })
-            .catch(error => console.log(error))
+        this.props.addBusiness({business: this.state})
     }
 
     handleUpdate = (event) => {
         event.preventDefault()
-        console.log('updating business')
 
-        Axios.patch(`http://localhost:3000/businesses/${this.props.business.id}`, {
-            business: this.state
-        }, {
-            withCredentials: true
-        })
-        .then(resp => {
-            console.log(resp)
-            window.location.reload()
-        })
-        .catch(error => {
-            alert('error fetching')
-            console.log(error)
-        })
+        this.props.updateBusiness({...this.state, id: this.props.auth.business.id})
     }
 
     render() {
         return (
             <div className="form-container">
-                <form className="busi-form box" onSubmit={this.props.business.title ? this.handleUpdate : this.handleSubmit}>
-                    <h2 className="busi-form">{this.props.business.title ? 'Edit':'Add'} Your Business</h2>
+                <form className="busi-form box" onSubmit={this.props.auth.business.title ? this.handleUpdate : this.handleSubmit}>
+                    <div className="close"><button onClick={this.props.closeForm}>X</button></div>
+                    <h2 className="busi-form">{this.props.auth.business.title ? 'Edit':'Add'} Your Business</h2>
                     <input className="busi-form item" type="text" name="title" value={this.state.title} placeholder="title" onChange={this.handleChange} required/><br/><br/>
                     <textarea className="busi-form item" name="description" value={this.state.description} placeholder="description" onChange={this.handleChange}></textarea><br/><br/>
                     <textarea className="busi-form item" name="services" value={this.state.services} placeholder="services you offer" onChange={this.handleChange}></textarea><br/><br/>
@@ -70,9 +52,18 @@ export default class BusinessForm extends Component {
                     <input className="busi-form item" type="text" name="phone" value={this.state.phone} placeholder="phone#" onChange={this.handleChange}/><br/>
                     <input className="busi-form item" type="text" name="email" value={this.state.email} placeholder="email" onChange={this.handleChange}/><br/>
                     <input className="busi-form item" type="text" name="website" value={this.state.website} placeholder="website (https://www.ex.com)" onChange={this.handleChange}/><br/>
-                    <input className="busi-form item" type="submit" value={this.props.business.title ? 'Update Business' : 'Add Business'}/>
+                    <input className="busi-form item" type="submit" value={this.props.auth.business.title ? 'Update Business' : 'Add Business'}/>
                 </form>
             </div>
         )
     }
 }
+
+const mapStateToProps = state => state
+
+const mapDispatchToProps = dispatch => ({
+    addBusiness: (business) => dispatch(addBusiness(business)),
+    updateBusiness: (business) => dispatch(updateBusiness(business))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BusinessForm)

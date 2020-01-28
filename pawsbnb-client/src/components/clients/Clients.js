@@ -6,7 +6,7 @@ import './css/clients.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
-import { addClient, removeClient, fetchClients } from '../../actions/clientsActions'
+import { addClient, removeClient } from '../../actions/clientsActions'
 
 class Clients extends Component {
     state = {
@@ -14,9 +14,9 @@ class Clients extends Component {
         clientForm: false
     }
 
-    componentDidMount(){
-        this.props.fetchClients()
-    }
+    // componentDidMount(){
+    //     this.props.fetchClients()
+    // }
 
     toggleClientForm = () => {
         this.setState(prevState => {
@@ -60,7 +60,7 @@ class Clients extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.clients[0] ? this.props.clients.map(client => <ClientRow key={client.id} deleteClient={this.deleteClient} client={client} loadClient={this.loadClient}/>) : null}
+                        {this.props.auth.clients[0] ? this.props.auth.clients.map(client => <ClientRow key={client.id} deleteClient={this.deleteClient} client={client} loadClient={this.loadClient}/>) : null}
                     </tbody>
                 </table>
             </div>
@@ -72,8 +72,8 @@ const mapStateToProps = state => state
 
 const mapDispatchToProps = dispatch => ({
     addClient: (client) => dispatch(addClient(client)),
-    removeClient: (id) => dispatch(removeClient(id)),
-    fetchClients: () => dispatch(fetchClients())
+    removeClient: (id) => dispatch(removeClient(id))
+    // fetchClients: () => dispatch(fetchClients())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Clients)

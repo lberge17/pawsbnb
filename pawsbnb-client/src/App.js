@@ -10,54 +10,56 @@ import Businesses from './components/business/Businesses'
 import axios from 'axios'
 import { connect } from 'react-redux';
 import { addBusiness, removeBusiness } from './actions/businessActions'
-import { addUser, removeUser, login, logout } from './actions/userActions'
+import { fetchLogin, fetchLogout, fetchLoginStatus } from './actions/sessionActions'
 import Clients from './components/clients/Clients'
 import {LogoutButton} from './components/auth/LogoutButton'
 
 class App extends Component {
   handleSuccessfulAuth = (data, history) => {
-    this.handleLogin(data);
+    // this.handleLogin(data);
     history.push('/dashboard')
   }
 
-  handleLogin = (data) => {
-    this.props.addBusiness(data.business)
-    this.props.addUser(data.user)
-    this.props.login()
-  }
+  // handleLogin = (data) => {
+  //   this.props.addBusiness(data.business)
+  //   this.props.addUser(data.user)
+  //   this.props.login()
+  // }
 
   handleLogout = (history) => {
-    axios.delete("http://localhost:3000/logout", { withCredentials: true })
-      .then(resp => {
-        if(resp.data.logged_out) {
-          this.props.removeUser()
-          this.props.removeBusiness()
-          this.props.logout()
-          history.push('/')
-        }
-      })
-      .catch(error => console.log(error))
+    this.props.fetchLogout()
+    history.push('/')
+    // axios.delete("http://localhost:3000/logout", { withCredentials: true })
+    //   .then(resp => {
+    //     if(resp.data.logged_out) {
+    //       this.props.removeUser()
+    //       this.props.removeBusiness()
+    //       this.props.logout()
+    //       history.push('/')
+    //     }
+    //   })
+    //   .catch(error => console.log(error))
   }
 
-  checkLoginStatus = () => {
-    axios.get("http://localhost:3000/logged_in", { withCredentials: true })
-      .then(resp => {
-        console.log(resp)
-        if (resp.data.logged_in) {
-          this.props.addUser(resp.data.user)
-          this.props.addBusiness(resp.data.business)
-          this.props.login()
-        } else {
-          this.props.removeBusiness()
-          this.props.removeUser()
-          this.props.logout()
-        }
-      })
-      .catch(error => console.log(error))
-  }
+  // checkLoginStatus = () => {
+  //   axios.get("http://localhost:3000/logged_in", { withCredentials: true })
+  //     .then(resp => {
+  //       console.log(resp)
+  //       if (resp.data.logged_in) {
+  //         this.props.addUser(resp.data.user)
+  //         this.props.addBusiness(resp.data.business)
+  //         this.props.login()
+  //       } else {
+  //         this.props.removeBusiness()
+  //         this.props.removeUser()
+  //         this.props.logout()
+  //       }
+  //     })
+  //     .catch(error => console.log(error))
+  // }
 
   componentDidMount() {
-    this.checkLoginStatus()
+    this.props.fetchLoginStatus()
   }
 
   render () {
@@ -67,33 +69,31 @@ class App extends Component {
           <Route 
             exact path='/'
             render={props => (
-              <Home { ...props } loggedIn={this.props.loggedIn} />
+              <Home { ...props } />
             )}
           />
           <Route
             exact path='/login'
             render={props => (
-              <Login { ...props } loggedIn={this.props.loggedIn} handleSuccessfulAuth={this.handleSuccessfulAuth} />
+              <Login { ...props } fetchLogin={this.props.fetchLogin} handleSuccessfulAuth={this.handleSuccessfulAuth} />
             )}
           />
           <Route
             exact path='/signup'
             render={props => (
-              <Signup { ...props } loggedIn={this.props.loggedIn} handleSuccessfulAuth={this.handleSuccessfulAuth} />
+              <Signup { ...props } handleSuccessfulAuth={this.handleSuccessfulAuth} />
             )}
           />
           <Route
             exact path='/about'
             render={props => (
-              <About { ...props } loggedIn={this.props.loggedIn} />
+              <About { ...props } />
             )}
           />
           <Route
             exact path='/dashboard'
             render={props => (
-              this.props.loggedIn ? 
-              <Dashboard { ...props } loggedIn={this.props.loggedIn} /> :
-              <Redirect to='/'/>
+              <Dashboard { ...props } /> 
             )}
           />
           <Route
@@ -107,7 +107,7 @@ class App extends Component {
           <Route
             path='/'
             render={props => (
-              (this.props.loggedIn) ? 
+              (this.props.auth.loggedIn) ? 
               <LogoutButton {...props} handleLogout={this.handleLogout}/> : null
             )}
           />
@@ -124,10 +124,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addBusiness: (business) => dispatch(addBusiness(business)),
   removeBusiness: () => dispatch(removeBusiness()),
-  addUser: (user) => dispatch(addUser(user)),
-  removeUser: () => dispatch(removeUser()),
-  login: () => dispatch(login()),
-  logout: () => dispatch(logout())
+  fetchLogin: (user) => dispatch(fetchLogin(user)),
+  fetchLogout: () => dispatch(fetchLogout()),
+  fetchLoginStatus: () => dispatch(fetchLoginStatus())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

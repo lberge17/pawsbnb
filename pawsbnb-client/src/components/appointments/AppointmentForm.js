@@ -72,7 +72,7 @@ class AppointmentForm extends Component {
                     <label>Client:</label><br/>
                     <select name="client_id" value={this.state.client_id} onChange={this.handleChange}>
                         <option>Choose an existing client...</option>
-                        {this.props.clients.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                        {this.props.auth.clients.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                     </select><br/>
                     <label>Pets:</label><br/>
                     <input 

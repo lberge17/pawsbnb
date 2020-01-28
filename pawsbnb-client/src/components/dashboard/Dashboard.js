@@ -3,7 +3,7 @@ import BusinessForm from '../business/BusinessForm'
 import Calendar from './Calendar'
 import './css/dashboard.css'
 import { connect } from 'react-redux';
-import { fetchAppointments, updateAppointment } from '../../actions/appointmentsActions'
+import { updateAppointment } from '../../actions/appointmentsActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -62,10 +62,6 @@ class Dashboard extends Component {
         })
     }
 
-    componentDidMount() {
-        this.props.fetchAppointments()
-    }
-
     render() {
         return (
             <div>
@@ -84,23 +80,23 @@ class Dashboard extends Component {
                 </div>
 
                 <h1>Dashboard</h1>
-                <div>{this.props.business.title ? 
+                <div>{this.props.auth.business.title ? 
                     <div>
-                        <h3>Welcome back {this.props.user.name}!</h3>
-                        <p>Your Business: {this.props.business.title}</p>
-                        <p>Description: {this.props.business.description}</p>
-                        <p>Location: {this.props.business.location}</p>
+                        <h3>Welcome back {this.props.auth.user.name}!</h3>
+                        <p>Your Business: {this.props.auth.business.title}</p>
+                        <p>Description: {this.props.auth.business.description}</p>
+                        <p>Location: {this.props.auth.business.location}</p>
                     </div> : 
                     'Please Add Your Business'}
                 </div>
                 {this.state.form ? 
-                    <BusinessForm user={this.props.user} business={this.props.business} location={this.props.location}/> : null
+                    <BusinessForm user={this.props.auth.user} business={this.props.auth.business} location={this.props.location}/> : null
                 }
                 <p>*Click the icon on the left to open the menu*</p>
                 <div className="calendar-container">
                     <h1>Your Calendar</h1>
                     <Calendar 
-                        appointments={this.props.appointments} 
+                        appointments={this.props.auth.appointments} 
                         updateAppointment={this.props.updateAppointment} 
                         viewAppointment={this.state.viewAppointment}
                         newAppointment={this.state.newAppointment}
@@ -119,7 +115,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchAppointments: () => {dispatch(fetchAppointments())},
+    // fetchAppointments: () => {dispatch(fetchAppointments())},
     updateAppointment: (appointment) => {dispatch(updateAppointment(appointment))} 
 })
 

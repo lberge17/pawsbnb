@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './css/auth.css';
 import Logo from '../../logo/pawsbnb-logo.png'
-import axios from 'axios';
+// import axios from 'axios';
 
 export default class Login extends Component {
     state = {
@@ -20,25 +20,26 @@ export default class Login extends Component {
         const { email, password } = this.state
 
         event.preventDefault();
-        axios.post("http://localhost:3000/sessions", {
-                user: {
-                    email,
-                    password
-                }
-            }, 
-            { withCredentials: true }
-        )
-        .then(resp => {
-            if (resp.data.logged_in) {
-                this.props.handleSuccessfulAuth(resp.data, this.props.history)
-            } else {
-                console.log(resp)
-                this.setState({
-                    error: "Invalid login."
-                })
-            }
-        })
-        .catch(error => console.log(error))
+        this.props.fetchLogin({user: {email,password}})
+        // axios.post("http://localhost:3000/sessions", {
+        //         user: {
+        //             email,
+        //             password
+        //         }
+        //     }, 
+        //     { withCredentials: true }
+        // )
+        // .then(resp => {
+        //     if (resp.data.logged_in) {
+        //         this.props.handleSuccessfulAuth(resp.data, this.props.history)
+        //     } else {
+        //         console.log(resp)
+        //         this.setState({
+        //             error: "Invalid login."
+        //         })
+        //     }
+        // })
+        // .catch(error => console.log(error))
     }
 
     render() {

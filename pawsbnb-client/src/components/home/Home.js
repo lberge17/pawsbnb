@@ -3,14 +3,7 @@ import Logo from '../../logo/pawsbnb-logo.png'
 import './css/home.css';
 
 export default class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        if (this.props.loggedIn) {
-            this.props.history.push('./dashboard')
-        }
         return (
             <div className="home-wrapper">
                 <div className="home">

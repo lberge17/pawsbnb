@@ -1,3 +1,5 @@
+import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons"
+
 export default (state = {loggedIn: false, user: {}, business: {}, clients: [], appointments: []}, action) => {
     let client
     switch (action.type) {
@@ -102,15 +104,31 @@ export default (state = {loggedIn: false, user: {}, business: {}, clients: [], a
                 ...state,
                 business: {},
             }
+        
+        case 'ADD_APPOINTMENT':
+
+            return {
+                ...state,
+                appointments: [...state.appointments, action.appointment]
+            }
+        
+        case 'UPDATE_APPOINTMENT':
+
+            return {
+                ...state, 
+                appointments: [...state.appointments.filter(app => app.id !== action.appointment.id), 
+                action.appointment]
+            }
+
+        case 'DELETE_APPOINTMENT':
+
+            return {
+                ...state,
+                appointments: state.appointments.filter(app => app.id !== action.id)
+            }
     
         default:
     
             return state
-    
-
-        default:
-
-            return state
-
     }
 }

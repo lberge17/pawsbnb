@@ -11,7 +11,10 @@ class RegistrationsController < ApplicationController
             session[:user_id] = user.id
             render json: {
                 status: :created,
-                user: user
+                user: user,
+                business: {},
+                clients: [],
+                appointments: []
             }
         else
             render json: {

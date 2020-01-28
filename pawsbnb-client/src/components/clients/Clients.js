@@ -40,6 +40,7 @@ class Clients extends Component {
         console.log(this.props)
         return (
             <div>
+                {this.renderRedirectHome()}
                 <h1 style={{textAlign: 'center'},{fontSize: '3em'}}>Clients List</h1>
                 {this.props.requesting ? <div>loading...</div> : null}
                 {this.state.clientForm ? <ClientForm toggleClientForm={this.toggleClientForm} addClient={this.props.addClient}/> : <button onClick={this.toggleClientForm}>Add new Client</button>}

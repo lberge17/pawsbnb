@@ -7,56 +7,30 @@ import About from './components/about/About'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import Businesses from './components/business/Businesses'
-import axios from 'axios'
 import { connect } from 'react-redux';
 // import { addBusiness, removeBusiness } from './actions/businessActions'
 import { fetchLogin, fetchLogout, fetchLoginStatus } from './actions/sessionActions'
+import { fetchSignin } from './actions/registrationActions'
 import Clients from './components/clients/Clients'
 import {LogoutButton} from './components/auth/LogoutButton'
 
 class App extends Component {
-  handleSuccessfulAuth = (data, history) => {
-    // this.handleLogin(data);
-    history.push('/dashboard')
-  }
-
-  // handleLogin = (data) => {
-  //   this.props.addBusiness(data.business)
-  //   this.props.addUser(data.user)
-  //   this.props.login()
-  // }
-
   handleLogout = (history) => {
     this.props.fetchLogout()
-    history.push('/')
-    // axios.delete("http://localhost:3000/logout", { withCredentials: true })
-    //   .then(resp => {
-    //     if(resp.data.logged_out) {
-    //       this.props.removeUser()
-    //       this.props.removeBusiness()
-    //       this.props.logout()
-    //       history.push('/')
-    //     }
-    //   })
-    //   .catch(error => console.log(error))
+    // history.push('/')
   }
 
-  // checkLoginStatus = () => {
-  //   axios.get("http://localhost:3000/logged_in", { withCredentials: true })
-  //     .then(resp => {
-  //       console.log(resp)
-  //       if (resp.data.logged_in) {
-  //         this.props.addUser(resp.data.user)
-  //         this.props.addBusiness(resp.data.business)
-  //         this.props.login()
-  //       } else {
-  //         this.props.removeBusiness()
-  //         this.props.removeUser()
-  //         this.props.logout()
-  //       }
-  //     })
-  //     .catch(error => console.log(error))
-  // }
+  renderRedirectDashboard = () => {
+    if (this.props.auth.loggedIn) {
+      return <Redirect to='/dashboard' />
+    }
+  }
+
+  renderRedirectHome = () => {
+    if (!this.props.auth.loggedIn) {
+      return <Redirect to='/' />
+    }
+  }
 
   componentDidMount() {
     this.props.fetchLoginStatus()
@@ -69,19 +43,30 @@ class App extends Component {
           <Route 
             exact path='/'
             render={props => (
-              <Home { ...props } />
+              <Home 
+                { ...props } 
+                renderRedirectDashboard={this.renderRedirectDashboard}
+              />
             )}
           />
           <Route
             exact path='/login'
             render={props => (
-              <Login { ...props } fetchLogin={this.props.fetchLogin} handleSuccessfulAuth={this.handleSuccessfulAuth} />
+              <Login 
+                { ...props } 
+                renderRedirectDashboard={this.renderRedirectDashboard} 
+                fetchLogin={this.props.fetchLogin} 
+              />
             )}
           />
           <Route
             exact path='/signup'
             render={props => (
-              <Signup { ...props } handleSuccessfulAuth={this.handleSuccessfulAuth} />
+              <Signup 
+                { ...props } 
+                renderRedirectDashboard={this.renderRedirectDashboard} 
+                fetchSignin={this.props.fetchSignin}
+              />
             )}
           />
           <Route
@@ -93,7 +78,10 @@ class App extends Component {
           <Route
             exact path='/dashboard'
             render={props => (
-              <Dashboard { ...props } /> 
+              <Dashboard 
+                { ...props } 
+                renderRedirectHome={this.renderRedirectHome} 
+              /> 
             )}
           />
           <Route
@@ -102,7 +90,13 @@ class App extends Component {
           />
           <Route
             exact path='/clients'
-            component={Clients}
+            render={props => (
+              <Clients 
+                {...props} 
+                renderRedirectHome={this.renderRedirectHome}
+              />
+            )}
+            
           />
           <Route
             path='/'
@@ -122,8 +116,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  // addBusiness: (business) => dispatch(addBusiness(business)),
-  // removeBusiness: () => dispatch(removeBusiness()),
+  fetchSignin: (user) => dispatch(fetchSignin(user)),
   fetchLogin: (user) => dispatch(fetchLogin(user)),
   fetchLogout: () => dispatch(fetchLogout()),
   fetchLoginStatus: () => dispatch(fetchLoginStatus())

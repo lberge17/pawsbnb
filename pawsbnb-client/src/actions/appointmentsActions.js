@@ -13,19 +13,6 @@ export function addAppointment(appointment) {
     };
 }
 
-// export function fetchAppointments() {
-//     return (dispatch) => {
-//       dispatch({ type: 'START_FETCH_REQUEST' });
-//       Axios.get(`http://localhost:3000/appointments`,  {withCredentials: true})
-//         .then(response => {
-//             console.log(response)
-//             dispatch({type: 'ADD_APPOINTMENTS', appointments: response.data })
-//             dispatch({ type: 'FINISH_FETCH_REQUEST' })
-//         })
-//         .catch(error => console.log(error))
-//     };
-// }
-
 export function updateAppointment(appointment) {
     return (dispatch) => {
         dispatch({ type: 'START_FETCH_REQUEST' });

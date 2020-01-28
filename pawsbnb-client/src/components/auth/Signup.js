@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './css/auth.css';
 import Logo from '../../logo/pawsbnb-logo.png'
-import axios from 'axios';
 
 export default class Signup extends Component {
     constructor(props) {
@@ -18,26 +17,9 @@ export default class Signup extends Component {
 
     handleSubmit = (event) => {
         const { name, email, password, password_confirmation } = this.state
-
         event.preventDefault();
-        axios.post("http://localhost:3000/registrations", {
-                user: {
-                    name,
-                    email,
-                    password,
-                    password_confirmation
-                }
-            }, 
-            { withCredentials: true }
-        )
-        .then(resp => this.props.handleSuccessfulAuth(resp.data, this.props.history))
-        .catch(error => console.log(error))
-        // this.setState({
-        //     name: '',
-        //     email: '',
-        //     password: '',
-        //     password_confirmation: ''
-        // })
+
+        this.props.fetchSignin({user: {name, email, password, password_confirmation}})
     }
 
     handleChange = ({target}) => {
@@ -49,6 +31,7 @@ export default class Signup extends Component {
     render() {
         return (
             <div className="auth-background">
+                {this.props.renderRedirectDashboard()}
                 <div className="auth-box signup">
                     <img src={Logo} alt="logo" className="auth-logo"/>
                     <form onSubmit={this.handleSubmit} className="auth-form">

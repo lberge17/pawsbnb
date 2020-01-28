@@ -29,6 +29,7 @@ class Client extends Component {
 
         return (
             <div className="client-data">
+                {this.props.renderRedirectHome()}
                 <div className="right">
                     <a className="remove" href="#" onClick={this.props.removeClient}>&times;</a>
                 </div>

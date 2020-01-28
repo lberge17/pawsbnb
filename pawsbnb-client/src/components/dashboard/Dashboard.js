@@ -65,6 +65,7 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
+                {this.props.renderRedirectHome()}
                 <div className="hamIcon pointer-cursor" onClick={this.toggle}><FontAwesomeIcon icon={faBars}/></div>
                 <div className="side-container">
                     <div id="mySidebar" className={this.state.toggleHam ? "sidebar toggle" : "sidebar"}>

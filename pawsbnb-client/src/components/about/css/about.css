@@ -1,40 +1,31 @@
 .wrapper {
-    overflow: hidden;
-}
-
-.navbar {
-    list-style-type: none;
+    width: 100%;
     margin: 0;
     padding: 0;
-    text-align: left;
-    height: 10vh;
-    background-color: whitesmoke;
-    padding: 10px;
-    overflow: hidden;
-}
-  
-.navlink {
-    color: rgb(0, 0, 109);
-    display: inline;
-    padding: 5px;
-    font-size: 2em;
-    text-decoration: none;
+    text-align: center;
 }
 
 .logo {
-    height: 100%;
+    width: 100%;
+    z-index: 0;
+    opacity: 20%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .about-container {
+    z-index: 2;
     position: relative;
-    padding: 5%;
-    height: 90vh;
     width: 90%;
-    margin: 1%;
-    border: 2px solid black;
+    margin: 5%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.center {
-    text-align: center;
-    font-size: 3em;
+.info {
+    text-align: left;
+}
+
+li {
+    font-size: 1.3em;
 }

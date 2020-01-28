@@ -38,6 +38,7 @@ class App extends Component {
             render={props => (
               <Home 
                 { ...props }
+                loggedIn={this.props.auth.loggedIn}
               />
             )}
           />

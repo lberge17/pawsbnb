@@ -59,7 +59,7 @@ class Clients extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.auth.clients[0] ? this.props.auth.clients.map(client => <ClientRow key={client.id} deleteClient={this.deleteClient} client={client} loadClient={this.loadClient}/>) : null}
+                        {this.props.auth.clients.map(client => <ClientRow key={client.id} deleteClient={this.deleteClient} client={client} loadClient={this.loadClient}/>)}
                     </tbody>
                 </table>
             </div> : 

@@ -24,7 +24,7 @@ export default class ClientForm extends Component {
 
     render(){
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className="client-form">
                 <h1>Add a Client</h1>
                 <input 
                     type="text" 

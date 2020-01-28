@@ -1,18 +1,5 @@
 import Axios from "axios"
 
-// export const addBusiness = (business) => dispatch => {
-//     dispatch({
-//         type: 'ADD_BUSINESS',
-//         business
-//     })
-// }
-
-// export const removeBusiness = () => dispatch => {
-//     dispatch({
-//         type: 'REMOVE_BUSINESS'
-//     })
-// }
-
 export function fetchBusinesses() {
     return(dispatch) => {
         dispatch({type: 'START_FETCH'})

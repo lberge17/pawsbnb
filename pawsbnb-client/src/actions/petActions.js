@@ -13,7 +13,9 @@ export function addPet(pet) {
       Axios.post(`http://localhost:3000/pets`, {pet}, {withCredentials: true})
         .then(response => {
             console.log(response)
-            dispatch({type: 'ADD_PET', pet: response.data.pet })
+            if (response.data.status === 'created') {
+                dispatch({type: 'ADD_PET', pet: response.data.pet })
+            }
             dispatch({ type: 'FINISH_FETCH_REQUEST' })
         })
         .catch(error => console.log(error))

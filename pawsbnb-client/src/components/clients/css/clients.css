@@ -41,6 +41,12 @@ td {
     text-decoration: none;
 }
 
+.client-form > input[type="submit"] {
+    background: rgb(88, 35, 81);
+    color: white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
 @media only screen and (max-width: 500px) {
     td {
         font-size: 10px;

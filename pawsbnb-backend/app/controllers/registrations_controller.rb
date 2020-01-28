@@ -7,11 +7,12 @@ class RegistrationsController < ApplicationController
             password_confirmation: params['user']['password_confirmation']
         )
 
-        if user
+        if user.valid?
             session[:user_id] = user.id
             render json: {
                 status: :created,
                 user: user,
+                logged_in: true,
                 business: {},
                 clients: [],
                 appointments: []

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchClients } from '../../actions/clientsActions'
 import { addAppointment, updateAppointment, deleteAppointment } from '../../actions/appointmentsActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -19,10 +18,6 @@ class AppointmentForm extends Component {
             start: props.appointment.start || "",
             end: props.appointment.end || ""
         }
-    }
-
-    componentDidMount(){
-        this.props.fetchClients()
     }
 
     handleChange = ({target}) => {
@@ -130,7 +125,6 @@ class AppointmentForm extends Component {
 const mapStateToProps = (state) => state
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchClients: () => {dispatch(fetchClients())},
     addAppointment: (appointment) => {dispatch(addAppointment(appointment))},
     updateAppointment: (appointment) => {dispatch(updateAppointment(appointment))},
     deleteAppointment: (id) => {dispatch(deleteAppointment(id))}

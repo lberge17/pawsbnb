@@ -13,19 +13,6 @@ export function addClient(client) {
     };
 }
 
-export function fetchClients() {
-    return (dispatch) => {
-      dispatch({ type: 'START_FETCH_REQUEST' });
-      Axios.get('http://localhost:3000/clients', {withCredentials: true})
-        .then(response => {
-            console.log(response)
-            dispatch({type: 'ADD_CLIENTS', clients: response.data })
-            dispatch({type: 'FINISH_FETCH_REQUEST' })
-        })
-        .catch(error => console.log(error))
-    };
-}
-
 export function removeClient(id) {
     return (dispatch) => {
       dispatch({ type: 'START_FETCH_REQUEST' });

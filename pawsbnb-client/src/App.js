@@ -9,7 +9,7 @@ import Signup from './components/auth/Signup'
 import Businesses from './components/business/Businesses'
 import axios from 'axios'
 import { connect } from 'react-redux';
-import { addBusiness, removeBusiness } from './actions/businessActions'
+// import { addBusiness, removeBusiness } from './actions/businessActions'
 import { fetchLogin, fetchLogout, fetchLoginStatus } from './actions/sessionActions'
 import Clients from './components/clients/Clients'
 import {LogoutButton} from './components/auth/LogoutButton'
@@ -122,8 +122,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addBusiness: (business) => dispatch(addBusiness(business)),
-  removeBusiness: () => dispatch(removeBusiness()),
+  // addBusiness: (business) => dispatch(addBusiness(business)),
+  // removeBusiness: () => dispatch(removeBusiness()),
   fetchLogin: (user) => dispatch(fetchLogin(user)),
   fetchLogout: () => dispatch(fetchLogout()),
   fetchLoginStatus: () => dispatch(fetchLoginStatus())

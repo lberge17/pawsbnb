@@ -14,5 +14,6 @@ export default combineReducers({
     // clients: clientsReducer,
     // appointments: appointmentsReducer,
     requesting: fetchReducer,
-    auth: authReducer
+    auth: authReducer,
+    businesses: businessReducer
 });

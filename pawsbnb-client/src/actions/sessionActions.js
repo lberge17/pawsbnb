@@ -15,7 +15,7 @@ export const fetchLogin = (user) => {
                             appointments: response.data.appointments
                         })
                     } else {
-                        // dispatch({type: 'ADD_ERROR', error: 'invalid login'})
+                        // need some find of error
                     }
                 dispatch({ type: 'FINISH_FETCH_REQUEST' })
             })
@@ -32,7 +32,7 @@ export const fetchLogout = () => {
                 if (response.data.logged_out) {
                         dispatch({type: 'LOGOUT'})
                     } else {
-                        // dispatch({type: 'LOGOUT'})
+                        // need some kind of error
                     }
                 dispatch({ type: 'FINISH_FETCH_REQUEST' })
             })
@@ -47,7 +47,13 @@ export const fetchLoginStatus = () => {
           .then(response => {
               console.log(response)
               if (response.data.logged_in) {
-                    dispatch({type: 'LOGIN', user: response.data.user, business: response.data.business, clients: response.data.clients, appointments: response.data.appointments})
+                    dispatch({
+                        type: 'LOGIN', 
+                        user: response.data.user, 
+                        business: response.data.business, 
+                        clients: response.data.clients, 
+                        appointments: response.data.appointments
+                    })
                 } else {
                     dispatch({type: 'LOGOUT'})
                 }

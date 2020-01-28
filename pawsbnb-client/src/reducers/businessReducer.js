@@ -1,14 +1,8 @@
-export default (state = {}, action) => {
+export default (state = [], action) => {
     switch (action.type) {
-        case 'ADD_BUSINESS':
+        case 'ADD_BUSINESSES':
 
-            return {
-                ...action.business
-            }
-        
-        case 'REMOVE_BUSINESS':
-
-            return {}
+            return action.businesses
 
         default:
 

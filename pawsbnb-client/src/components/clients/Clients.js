@@ -14,10 +14,6 @@ class Clients extends Component {
         clientForm: false
     }
 
-    // componentDidMount(){
-    //     this.props.fetchClients()
-    // }
-
     toggleClientForm = () => {
         this.setState(prevState => {
             return {clientForm: !prevState.clientForm}
@@ -73,7 +69,6 @@ const mapStateToProps = state => state
 const mapDispatchToProps = dispatch => ({
     addClient: (client) => dispatch(addClient(client)),
     removeClient: (id) => dispatch(removeClient(id))
-    // fetchClients: () => dispatch(fetchClients())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Clients)

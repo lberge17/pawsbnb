@@ -1,17 +1,10 @@
 import React from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-// import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import AppointmentForm from '../appointments/AppointmentForm'
 
 export default class Calendar extends React.Component {
-    // state = {
-    //     viewAppointment: false,
-    //     appointment: null,
-    //     newAppointment: false
-    // }
-
     handleEventDrop = (info) => {
         console.log(info)
 
@@ -27,36 +20,7 @@ export default class Calendar extends React.Component {
     handleEventClick= ({event}) => {
         console.log(event.extendedProps)
         this.props.openAppointment(event.extendedProps)
-        // this.setState({
-        //     viewAppointment: true,
-        //     appointment: event.extendedProps,
-        //     newAppointment: false
-        // })
     }
-
-    // closeAppointment = () => {
-    //     // this.setState({
-    //     //     viewAppointment: false,
-    //     //     appointment: null,
-    //     //     newAppointment: false
-    //     // })
-    // }
-
-    // openNewAppointment = () => {
-    //     // this.setState({
-    //     //     viewAppointment: false,
-    //     //     appointment: null,
-    //     //     newAppointment: true
-    //     // })
-    // }
-
-    // closeNewAppointment = () => {
-    //     // this.setState({
-    //     //     viewAppointment: false,
-    //     //     appointment: null,
-    //     //     newAppointment: false
-    //     // })
-    // }
 
     formatEvents = () => {
         

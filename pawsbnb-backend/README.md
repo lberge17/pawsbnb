@@ -1,24 +1,5 @@
-# README
+# PawsBnB API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This API is the backend for the PAWSBnB application for Flatiron School. This API was created without the --api flag when generating the rails application so it can make use of sessions.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The main purpose of the API is data persistance and retrieval of users, clients, pets, businesses, and appointments.

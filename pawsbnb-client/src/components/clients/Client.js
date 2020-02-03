@@ -30,7 +30,7 @@ class Client extends Component {
         return (
             <div className="client-data">
                 <div className="right">
-                    <a className="remove" href="#" onClick={this.props.removeClient}>&times;</a>
+                    <a className="remove" onClick={this.props.removeClient}>&times;</a>
                 </div>
                 <h2>{name}</h2>
                 <p>Phone: {phone}</p>

@@ -35,7 +35,7 @@ export default class Calendar extends React.Component {
     }
 
     render() {
-        console.log(this.formatEvents())
+        // console.log(this.formatEvents())
         return (
             <div>
                     {this.props.viewAppointment ? 
@@ -57,7 +57,6 @@ export default class Calendar extends React.Component {
                 <FullCalendar 
                     defaultView="dayGridMonth" 
                     plugins={[dayGridPlugin, interactionPlugin]}
-                    dateClick={this.handleDateClick}
                     editable={true}
                     eventDrop={this.handleEventDrop}
                     eventClick={this.handleEventClick}

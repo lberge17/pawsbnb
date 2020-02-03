@@ -58,8 +58,8 @@
     z-index: 1;
     background-image: 
         linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1)
         ),
         url('../images/kitten-image.jpeg');
     background-size: cover;
@@ -73,8 +73,8 @@
     z-index: 1;
     background-image: 
         linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.2)
         ),
         url('../images/dog-running-image.jpg');
     background-size: cover;
@@ -88,8 +88,8 @@
     z-index: 1;
     background-image: 
         linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1)
         ),
         url('../images/dogs-snow-image.jpg');
     background-size: cover;
@@ -103,8 +103,8 @@
     z-index: 1;
     background-image: 
         linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
         ),
         url('../images/cardboard-kittens-image.jpg');
     background-size: cover;

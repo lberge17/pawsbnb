@@ -43,7 +43,7 @@ class Clients extends Component {
             <>
             {this.props.auth.loggedIn ?
             <div>
-                <h1 style={{textAlign: 'center'},{fontSize: '3em'}}>Clients List</h1>
+                <h1 style={{textAlign: 'center', fontSize: '3em'}}>Clients List</h1>
                 {this.props.requesting ? <div>loading...</div> : null}
                 {this.state.clientForm ? <ClientForm toggleClientForm={this.toggleClientForm} addClient={this.props.addClient}/> : <button onClick={this.toggleClientForm}>Add new Client</button>}
                 {this.state.clientId ? <Client clientId={this.state.clientId} removeClientPopup={this.removeClientPopup}/> : null}

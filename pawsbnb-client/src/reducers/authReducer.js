@@ -1,5 +1,3 @@
-import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons"
-
 export default (state = {loggedIn: false, user: {}, business: {}, clients: [], appointments: []}, action) => {
     let client
     switch (action.type) {

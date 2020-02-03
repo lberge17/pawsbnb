@@ -21,7 +21,7 @@ export default class Home extends Component {
                             <p className="home-pg-link">About PawsBnB</p>
                         </a>
                     </div>
-                    <img className="centered-logo" src={Logo}/>
+                    <img className="centered-logo" src={Logo} alt="logo"/>
                 </div>
             </div>
         )

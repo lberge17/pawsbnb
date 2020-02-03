@@ -5,7 +5,7 @@ import Logo from "../../logo/pawsbnb-logo.png"
 export const Business = (props)=> {
     return (
         <div className="card">
-            <img className="card-logo" src={Logo} />
+            <img className="card-logo" src={Logo} alt="logo" />
             <div className="container">
                 <h4><b>{props.title}</b></h4>
                 <p>Location: {props.location}</p>
